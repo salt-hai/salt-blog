@@ -3,7 +3,7 @@
 
 ---
 
-1）确定使用的技术：SpringBoot+Mybatis+Thymeleaf+局部Ajax异步请求+HTML（后续加上Token Redis shiro）+MySQL，版本管理 git
+1）确定使用的技术：SpringBoot+Mybatis+Thymeleaf+局部Ajax异步请求+HTML（后续加上Token Redis shiro）+MySQL，版本管理 git 编码规约：阿里巴巴Java开发手册
 
 2）系统的使用者：用户浏览者，管理员Admin
 
