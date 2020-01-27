@@ -12,6 +12,7 @@ public class Article {
     private String articleTime;
     private String articleContent;
     private String articleBelong;
+    private String articleShow;
 
     public int getArticleId() {
         return articleId;
@@ -61,6 +62,14 @@ public class Article {
         this.articleBelong = articleBelong;
     }
 
+    public String getArticleShow() {
+        return articleShow;
+    }
+
+    public void setArticleShow(String articleShow) {
+        this.articleShow = articleShow;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
@@ -70,6 +79,7 @@ public class Article {
                 ", articleTime='" + articleTime + '\'' +
                 ", articleContent='" + articleContent + '\'' +
                 ", articleBelong='" + articleBelong + '\'' +
+                ", articleShow='" + articleShow + '\'' +
                 '}';
     }
 }
