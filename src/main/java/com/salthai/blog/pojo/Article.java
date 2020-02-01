@@ -6,13 +6,35 @@ package com.salthai.blog.pojo;
  * @Version 1.0
  */
 public class Article {
+    /**
+     * 文章主键
+     */
     private int articleId;
+    /**
+     * 文章标题
+     */
     private String articleTitle;
+    /**
+     * 文章作者
+     */
     private String articleAuthor;
+    /**
+     * 文章创建时间
+     */
     private String articleTime;
+    /**
+     * 文章内容
+     */
     private String articleContent;
-    private String articleBelong;
-    private String articleShow;
+    /**
+     * 文章隶属分类，默认：0 “其他”分类
+     */
+    private int articleBelong;
+    /**
+     * 是否首页显示
+     * 1为显示0为不显示，默认显示：1
+     */
+    private int articleShow;
 
     public int getArticleId() {
         return articleId;
@@ -54,19 +76,19 @@ public class Article {
         this.articleContent = articleContent;
     }
 
-    public String getArticleBelong() {
+    public int getArticleBelong() {
         return articleBelong;
     }
 
-    public void setArticleBelong(String articleBelong) {
+    public void setArticleBelong(int articleBelong) {
         this.articleBelong = articleBelong;
     }
 
-    public String getArticleShow() {
+    public int getArticleShow() {
         return articleShow;
     }
 
-    public void setArticleShow(String articleShow) {
+    public void setArticleShow(int articleShow) {
         this.articleShow = articleShow;
     }
 
@@ -78,8 +100,9 @@ public class Article {
                 ", articleAuthor='" + articleAuthor + '\'' +
                 ", articleTime='" + articleTime + '\'' +
                 ", articleContent='" + articleContent + '\'' +
-                ", articleBelong='" + articleBelong + '\'' +
-                ", articleShow='" + articleShow + '\'' +
+                ", articleBelong=" + articleBelong +
+                ", articleShow=" + articleShow +
                 '}';
     }
 }
+

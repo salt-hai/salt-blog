@@ -6,9 +6,21 @@ package com.salthai.blog.pojo;
  * @Version 1.0
  */
 public class Links {
+    /**
+     * 友情链接表主键
+     */
     private int likesId;
+    /**
+     * 链接标题
+     */
     private String likesTitle;
+    /**
+     * 链接内容
+     */
     private String likesHref;
+    /**
+     * 创建时间
+     */
     private String likesTime;
 
     public int getLikesId() {

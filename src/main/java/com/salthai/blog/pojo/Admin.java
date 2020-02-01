@@ -6,10 +6,25 @@ package com.salthai.blog.pojo;
  * @Version 1.0
  */
 public class Admin {
+    /**
+     * 管理员Id
+     */
     private int adminId;
+    /**
+     * 管理员用户名
+     */
     private String username;
+    /**
+     * 管理员登录密码
+     */
     private String password;
+    /**
+     * 管理员地址
+     */
     private String adminAddress;
+    /**
+     * 管理员相关信息
+     */
     private String adminAbout;
 
     public int getAdminId() {

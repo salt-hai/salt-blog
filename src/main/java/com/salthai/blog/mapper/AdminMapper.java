@@ -15,45 +15,55 @@ import java.util.List;
 @Repository
 public interface AdminMapper {
     /**
-     * @return List
      * 查询管理员
+     *
+     * @return List
      */
     @Select("select * from admin")
     public List<Admin> findAllAdmin();
 
     /**
-     * @return int
      * 插入管理员信息
+     *
+     * @param admin
+     * @return int
      */
     @Insert(" insert into admin ( username,password,adminAddress,adminAbout) values (#{username},#{password}," +
             "#{adminAddress},#{adminAbout}) ")
     public int saveAdmin(Admin admin);
 
     /**
+     * 根据Id删除
+     *
+     * @param id
      * @return int
-     * 根据id进行删除
      */
     @Delete(" delete from admin where id= #{adminId} ")
     public void deleteById(int id);
 
     /**
+     * 更新管理员信息
+     *
+     * @param id
      * @return Admin
-     * 根据id查找
      */
     @Select("select * from admin where id= #{adminId} ")
     public Admin findById(int id);
 
     /**
-     * @return int
      * 更新管理员密码
+     *
+     * @param admin
+     * @return int
      */
     @Update("update admin set password=#{password} where id=#{adminId} ")
     public int updateAdminPassword(Admin admin);
 
     /**
+     * 更新管理员信息
+     *
      * @param admin
      * @return int
-     * 更新管理员信息
      */
     @Update("update admin set username=#{username},adminAddress=#{adminAddress},adminAbout=#{adminAbout}" +
             " where id=#{adminId} ")

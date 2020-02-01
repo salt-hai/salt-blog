@@ -6,8 +6,17 @@ package com.salthai.blog.pojo;
  * @Version 1.0
  */
 public class Category {
+    /**
+     * 分类表主键
+     */
     private int categoryId;
+    /**
+     * 分类名称
+     */
     private String categoryName;
+    /**
+     * 创建时间
+     */
     private String categoryTime;
 
     public int getCategoryId() {

@@ -6,9 +6,21 @@ package com.salthai.blog.pojo;
  * @Version 1.0
  */
 public class Resource {
+    /**
+     * 资源表主键Id
+     */
     private int resourceId;
+    /**
+     * 资源名称
+     */
     private String resourceName;
+    /**
+     * 资源链接
+     */
     private String resourcePath;
+    /**
+     * 创建时间
+     */
     private String resourceTime;
 
     public int getResourceId() {
