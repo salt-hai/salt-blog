@@ -35,20 +35,20 @@ public interface AdminMapper {
     /**
      * 根据Id删除
      *
-     * @param id
+     * @param adminId
      * @return int
      */
-    @Delete(" delete from admin where id= #{adminId} ")
-    public void deleteById(int id);
+    @Delete(" delete from admin where adminId= #{adminId} ")
+    public void deleteByAdminId(int adminId);
 
     /**
-     * 更新管理员信息
+     * 查询管理员信息
      *
-     * @param id
+     * @param adminId
      * @return Admin
      */
-    @Select("select * from admin where id= #{adminId} ")
-    public Admin findById(int id);
+    @Select("select * from admin where adminId= #{adminId} ")
+    public Admin findByAdminId(int adminId);
 
     /**
      * 更新管理员密码
@@ -56,7 +56,7 @@ public interface AdminMapper {
      * @param admin
      * @return int
      */
-    @Update("update admin set password=#{password} where id=#{adminId} ")
+    @Update("update admin set password=#{password} where adminId=#{adminId} ")
     public int updateAdminPassword(Admin admin);
 
     /**
@@ -66,6 +66,6 @@ public interface AdminMapper {
      * @return int
      */
     @Update("update admin set username=#{username},adminAddress=#{adminAddress},adminAbout=#{adminAbout}" +
-            " where id=#{adminId} ")
+            " where adminId=#{adminId} ")
     public int updateAdminInfo(Admin admin);
 }
