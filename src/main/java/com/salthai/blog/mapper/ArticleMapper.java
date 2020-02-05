@@ -79,5 +79,5 @@ public interface ArticleMapper {
      * @return void
      */
     @Delete("delete from article where articleId= #{articleId} ")
-    public void deleteArticle(int articleId);
+    public void deleteByArticleId(int articleId);
 }
