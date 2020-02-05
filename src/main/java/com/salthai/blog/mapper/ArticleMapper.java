@@ -1,9 +1,7 @@
 package com.salthai.blog.mapper;
 
 import com.salthai.blog.pojo.Article;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -53,4 +51,33 @@ public interface ArticleMapper {
             " values (#{articleTitle},#{articleAuthor},#{articleTime},#{articleContent},#{articleBelong}," +
             "#{articleShow}) ")
     public int saveArticle(Article article);
+
+    /**
+     * 更新文章信息
+     *
+     * @param article
+     * @return int
+     */
+    @Update("update article set articleTitle=#{articleTitle},articleAuthor=#{articleAuthor}," +
+            "articleTime=#{articleTime},articleContent=#{articleContent},articleBelong=#{articleBelong}" +
+            "where articleId=#{articleId} ")
+    public int updateArticle(Article article);
+
+    /**
+     * 更新文章状态（是否首页显示）
+     *
+     * @param article
+     * @return int
+     */
+    @Update("update article set articleShow=#{articleShow} where articleId=#{articleId}")
+    public int updateArticleShow(Article article);
+
+    /**
+     * 删除文章
+     *
+     * @param articleId
+     * @return void
+     */
+    @Delete("delete from article where articleId= #{articleId} ")
+    public void deleteArticle(int articleId);
 }

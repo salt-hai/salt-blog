@@ -36,7 +36,7 @@ public interface AdminMapper {
      * 根据Id删除
      *
      * @param adminId
-     * @return int
+     * @return void
      */
     @Delete(" delete from admin where adminId= #{adminId} ")
     public void deleteByAdminId(int adminId);
