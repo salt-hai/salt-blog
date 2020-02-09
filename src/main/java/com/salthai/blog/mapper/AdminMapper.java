@@ -23,14 +23,14 @@ public interface AdminMapper {
     public List<Admin> findAllAdmin();
 
     /**
-     * 插入管理员信息
+     * 添加管理员
      *
      * @param admin
      * @return int
      */
     @Insert(" insert into admin ( username,password,adminAddress,adminAbout) values (#{username},#{password}," +
             "#{adminAddress},#{adminAbout}) ")
-    public int saveAdmin(Admin admin);
+    public int addAdmin(Admin admin);
 
     /**
      * 根据Id删除

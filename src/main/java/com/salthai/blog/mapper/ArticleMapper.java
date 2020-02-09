@@ -42,7 +42,16 @@ public interface ArticleMapper {
     public Article findByArticleId(int articleId);
 
     /**
-     * 保存文章信息
+     * 查询分类下的文章
+     *
+     * @param articleBelong
+     * @return List
+     */
+    @Select("select * from article where articleBelong= #{articleBelong}")
+    public List<Article> findByArticleBelong(int articleBelong);
+
+    /**
+     * 添加文章
      *
      * @param article
      * @return int
@@ -50,7 +59,7 @@ public interface ArticleMapper {
     @Insert(" insert into article ( articleTitle,articleAuthor,articleTime,articleContent,articleBelong,articleShow)" +
             " values (#{articleTitle},#{articleAuthor},#{articleTime},#{articleContent},#{articleBelong}," +
             "#{articleShow}) ")
-    public int saveArticle(Article article);
+    public int addArticle(Article article);
 
     /**
      * 更新文章信息
@@ -71,6 +80,15 @@ public interface ArticleMapper {
      */
     @Update("update article set articleShow=#{articleShow} where articleId=#{articleId}")
     public int updateArticleShow(Article article);
+
+    /**
+     * 更新文章分类
+     *
+     * @param articleId
+     * @return int
+     */
+    @Update("update article set articleBelong=#{articleBelong} where articleId=#{articleId}")
+    public int updateArticleBelong(int articleId);
 
     /**
      * 删除文章

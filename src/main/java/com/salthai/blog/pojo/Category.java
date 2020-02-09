@@ -1,5 +1,7 @@
 package com.salthai.blog.pojo;
 
+import java.util.List;
+
 /**
  * @Author: salthai
  * @Date: 2020/1/26 11:27
@@ -18,6 +20,19 @@ public class Category {
      * 创建时间
      */
     private String categoryTime;
+
+    /**
+     * 一对多的映射关系
+     */
+    private List<Article> articles;
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }
 
     public int getCategoryId() {
         return categoryId;
