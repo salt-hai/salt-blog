@@ -63,7 +63,23 @@ public interface CategoryMapper {
      */
     @Insert(" insert into category ( categoryName,categoryTime) values (#{categoryName},#{categoryTime}) ")
     public int addCategory(Category category);
+
     /**
+     * 删除分类
      *
+     * @param categoryId
+     * @return int
      */
+    @Delete("delete from category where categoryId= #{categoryId} ")
+    public int deleteByCategoryId(int categoryId);
+
+    /**
+     * 更新修改一条分类
+     *
+     * @param category
+     * @return int
+     */
+    @Update("update category set categoryName=#{categoryName},categoryTime=#{categoryTime} " +
+            "where categoryId=#{categoryId} ")
+    public int updateCategory(Category category);
 }

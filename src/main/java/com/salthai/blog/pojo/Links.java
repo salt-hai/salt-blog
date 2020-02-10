@@ -9,59 +9,59 @@ public class Links {
     /**
      * 友情链接表主键
      */
-    private int likesId;
+    private int linksId;
     /**
      * 链接标题
      */
-    private String likesTitle;
+    private String linksTitle;
     /**
      * 链接内容
      */
-    private String likesHref;
+    private String linksHref;
     /**
      * 创建时间
      */
-    private String likesTime;
+    private String linksTime;
 
-    public int getLikesId() {
-        return likesId;
+    public int getLinksId() {
+        return linksId;
     }
 
-    public void setLikesId(int likesId) {
-        this.likesId = likesId;
+    public void setLinksId(int linksId) {
+        this.linksId = linksId;
     }
 
-    public String getLikesTitle() {
-        return likesTitle;
+    public String getLinksTitle() {
+        return linksTitle;
     }
 
-    public void setLikesTitle(String likesTitle) {
-        this.likesTitle = likesTitle;
+    public void setLinksTitle(String linksTitle) {
+        this.linksTitle = linksTitle;
     }
 
-    public String getLikesHref() {
-        return likesHref;
+    public String getLinksHref() {
+        return linksHref;
     }
 
-    public void setLikesHref(String likesHref) {
-        this.likesHref = likesHref;
+    public void setLinksHref(String linksHref) {
+        this.linksHref = linksHref;
     }
 
-    public String getLikesTime() {
-        return likesTime;
+    public String getLinksTime() {
+        return linksTime;
     }
 
-    public void setLikesTime(String likesTime) {
-        this.likesTime = likesTime;
+    public void setLinksTime(String linksTime) {
+        this.linksTime = linksTime;
     }
 
     @Override
     public String toString() {
         return "Links{" +
-                "likesId=" + likesId +
-                ", likesTitle='" + likesTitle + '\'' +
-                ", likesHref='" + likesHref + '\'' +
-                ", likesTime='" + likesTime + '\'' +
+                "linksId=" + linksId +
+                ", linksTitle='" + linksTitle + '\'' +
+                ", linksHref='" + linksHref + '\'' +
+                ", linksTime='" + linksTime + '\'' +
                 '}';
     }
 }
