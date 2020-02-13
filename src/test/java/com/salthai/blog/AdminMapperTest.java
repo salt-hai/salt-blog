@@ -31,7 +31,7 @@ public class AdminMapperTest {
         admin.setAdminAddress("寻乌");
         admin.setUsername("salt");
         admin.setPassword("1234");
-        adminMapper.saveAdmin(admin);
+        adminMapper.addAdmin(admin);
         System.out.println("success");
     }
 
