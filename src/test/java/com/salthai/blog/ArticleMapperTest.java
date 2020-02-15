@@ -69,13 +69,42 @@ public class ArticleMapperTest {
         }
     }
 
+    /**
+     * 测试更新文章信息，失败
+     */
+    @Test
     public void updateArticle() {
+        //获取当前时间
+        Date date = new Date();
+        //设置日期格式
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //强制类型转换
+        String articleTime = df.format(date);
         Article article = new Article();
-        article.setArticleTitle("最近对于前后端分离的思考");
+        article.setArticleId(1);
+        article.setArticleTitle("Markdown简单使用方法");
         article.setArticleContent("测试");
         article.setArticleAuthor("salt");
         article.setArticleBelong(1);
         article.setArticleShow(1);
+        article.setArticleTime(articleTime);
+        articleMapper.updateArticle(article);
+        System.out.println("更新成功");
+    }
+
+    @Test
+    public void updateArticleShow() {
+        Article article = new Article();
+        article.setArticleId(1);
+        article.setArticleShow(0);
+        articleMapper.updateArticleShow(article);
+        System.out.println("更新状态成功");
+    }
+
+    @Test
+    public void updateArticleBelong() {
+        articleMapper.updateArticleBelong(1, 2);
+        System.out.println("success");
     }
 
     /**

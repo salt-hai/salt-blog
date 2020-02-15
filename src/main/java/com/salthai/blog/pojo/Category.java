@@ -26,14 +26,6 @@ public class Category {
      */
     private List<Article> articles;
 
-    public List<Article> getArticles() {
-        return articles;
-    }
-
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
-    }
-
     public int getCategoryId() {
         return categoryId;
     }
@@ -58,12 +50,21 @@ public class Category {
         this.categoryTime = categoryTime;
     }
 
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }
+
     @Override
     public String toString() {
         return "Category{" +
                 "categoryId=" + categoryId +
                 ", categoryName='" + categoryName + '\'' +
                 ", categoryTime='" + categoryTime + '\'' +
+                ", articles=" + articles +
                 '}';
     }
 }

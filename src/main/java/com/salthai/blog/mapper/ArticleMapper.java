@@ -68,8 +68,8 @@ public interface ArticleMapper {
      * @return int
      */
     @Update("update article set articleTitle=#{articleTitle},articleAuthor=#{articleAuthor}," +
-            "articleTime=#{articleTime},articleContent=#{articleContent},articleBelong=#{articleBelong}" +
-            "where articleId=#{articleId} ")
+            "articleTime=#{articleTime},articleContent=#{articleContent},articleBelong=#{articleBelong}," +
+            "articleShow=#{articleShow} where articleId=#{articleId}")
     public int updateArticle(Article article);
 
     /**
@@ -84,11 +84,11 @@ public interface ArticleMapper {
     /**
      * 更新文章分类
      *
-     * @param articleId
+     * @param articleId,articleBelong
      * @return int
      */
     @Update("update article set articleBelong=#{articleBelong} where articleId=#{articleId}")
-    public int updateArticleBelong(int articleId);
+    public int updateArticleBelong(int articleId, int articleBelong);
 
     /**
      * 删除文章
