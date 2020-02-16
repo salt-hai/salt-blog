@@ -66,4 +66,13 @@ public class AdminMapperTest {
         adminMapper.updateAdminInfo(admin);
         System.out.println("success");
     }
+
+    @Test
+    public void findAdmin() {
+        Admin admin = new Admin();
+        admin.setUsername("tom");
+        admin.setPassword("1234");
+        Admin admin1 = adminMapper.findAdmin(admin);
+        System.out.println(admin1);
+    }
 }

@@ -40,7 +40,7 @@ public interface CategoryMapper {
      * @return List
      */
     // 用于封装category（“一”的一方）
-    @Results(id = "categoryId", value = {
+    @Results(id = "categoryMap", value = {
             //id为主键
             @Result(id = true, column = "categoryId", property = "categoryId"),
             @Result(column = "categoryName", property = "categoryName"),
@@ -50,7 +50,9 @@ public interface CategoryMapper {
             //        select属性指定内容：查询用户的唯一标识
             //        column属性指定内容：用户根据 uid 查询账户是所需要的参数，当前uid是articleBelong
             //        fetchType属性指定内容:指定延时查询FetchType.LAZY或立即查询FetchType.EAGER
-            @Result(property = "articles", column = "articleBelong", many = @Many(select = "com.salthai.blog.mapper.ArticleMapper.findByArticleBelong", fetchType = FetchType.EAGER))
+            @Result(property = "articles", column = "articleBelong",
+                    many = @Many(select = "com.salthai.blog.mapper.ArticleMapper.findByArticleBelong",
+                            fetchType = FetchType.LAZY))
     })
     @Select("select * from category where categoryId=#{categoryId}")
     public Category findCategoryArticle(int categoryId);

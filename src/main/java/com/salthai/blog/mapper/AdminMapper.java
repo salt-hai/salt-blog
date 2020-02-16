@@ -23,6 +23,15 @@ public interface AdminMapper {
     public List<Admin> findAllAdmin();
 
     /**
+     * 根据用户名密码查询管理员
+     *
+     * @param admin
+     * @return int
+     */
+    @Select("select * from admin where username= #{username} && password=#{password} ")
+    public Admin findAdmin(Admin admin);
+
+    /**
      * 添加管理员
      *
      * @param admin

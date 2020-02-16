@@ -1,10 +1,8 @@
 package com.salthai.blog.mapper;
 
 import com.salthai.blog.pojo.Links;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -13,6 +11,8 @@ import java.util.List;
  * @Date: 2020/2/1 22:06
  * @Version 1.0
  */
+@Mapper
+@Repository
 public interface LinksMapper {
     /**
      * 查询全部链接
