@@ -19,9 +19,9 @@ public class IndexConfig implements WebMvcConfigurer {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
-        WebMvcConfigurer.super.addViewControllers(registry);
+//        registry.addViewController("/").setViewName("index");
+//        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+//        WebMvcConfigurer.super.addViewControllers(registry);
     }
 }
 

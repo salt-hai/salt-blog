@@ -2,6 +2,7 @@ package com.salthai.blog;
 
 import com.salthai.blog.mapper.ArticleMapper;
 import com.salthai.blog.pojo.Article;
+import com.youbenzi.mdtool.tool.MDTool;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +22,7 @@ public class ArticleMapperTest {
     @Autowired
     ArticleMapper articleMapper;
 
-
+    @Test
     public void saveArticle() {
         //获取当前时间
         Date date = new Date();
@@ -31,7 +32,7 @@ public class ArticleMapperTest {
         String articleTime = df.format(date);
 
         Article article = new Article();
-        article.setArticleTitle("最近对于前后端分离的思考");
+        article.setArticleTitle("测试4");
         article.setArticleContent("测试");
         article.setArticleAuthor("salt");
         article.setArticleBelong(1);
@@ -50,7 +51,16 @@ public class ArticleMapperTest {
     @Test
     public void findByArticleShow() {
         List<Article> articleList = articleMapper.findByArticleShow(1);
-        System.out.println(articleList);
+        List<Article> articleListHtml = new ArrayList<>();
+        for (Article article : articleList
+        ) {
+//            MD转html
+            String articleContent = MDTool.markdown2Html(article.getArticleContent());
+//            把转换后的Html注入articleContent属性
+            article.setArticleContent(articleContent);
+            articleListHtml.add(article);
+        }
+        System.out.println(articleListHtml);
     }
 
     @Test
