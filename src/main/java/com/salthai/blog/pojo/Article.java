@@ -35,6 +35,10 @@ public class Article {
      * 1为显示0为不显示，默认显示：1
      */
     private int articleShow;
+    /**
+     * 文章描述字段，截取内容一部分
+     */
+    private String articleDepict;
 
     public int getArticleId() {
         return articleId;
@@ -92,6 +96,14 @@ public class Article {
         this.articleShow = articleShow;
     }
 
+    public String getArticleDepict() {
+        return articleDepict;
+    }
+
+    public void setArticleDepict(String articleDepict) {
+        this.articleDepict = articleDepict;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
@@ -102,6 +114,7 @@ public class Article {
                 ", articleContent='" + articleContent + '\'' +
                 ", articleBelong=" + articleBelong +
                 ", articleShow=" + articleShow +
+                ", articleDepict='" + articleDepict + '\'' +
                 '}';
     }
 }

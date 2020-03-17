@@ -2,6 +2,7 @@ package com.salthai.blog;
 
 import com.salthai.blog.mapper.ArticleMapper;
 import com.salthai.blog.pojo.Article;
+import com.salthai.blog.utils.Html2Text;
 import com.youbenzi.mdtool.tool.MDTool;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class ArticleMapperTest {
         String articleTime = df.format(date);
 
         Article article = new Article();
-        article.setArticleTitle("测试4");
+        article.setArticleTitle("测试6");
         article.setArticleContent("测试");
         article.setArticleAuthor("salt");
         article.setArticleBelong(1);
@@ -56,6 +57,10 @@ public class ArticleMapperTest {
         ) {
 //            MD转html
             String articleContent = MDTool.markdown2Html(article.getArticleContent());
+//            截取字符串用作描述
+            String articleDepictText = Html2Text.getContent(articleContent);
+            String articleDepict = articleDepictText.substring(0, 35);
+            article.setArticleDepict(articleDepict);
 //            把转换后的Html注入articleContent属性
             article.setArticleContent(articleContent);
             articleListHtml.add(article);
@@ -65,7 +70,9 @@ public class ArticleMapperTest {
 
     @Test
     public void findByArticleId() {
-        Article article = articleMapper.findByArticleId(1);
+        Article article = articleMapper.findByArticleId(4);
+//        String articleDepict = article.getArticleContent().substring(0, 20);
+//        article.setArticleDepict(articleDepict);
         System.out.println(article);
 
     }

@@ -1,184 +1,177 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章详情</title>
+    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
+    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet" th:href="@{~/css/font-awesome.css}"/>
+    <link href="css/animate.css" rel="stylesheet" th:href="@{~/css/animate.css}"/>
+    <link href="css/style.css?v=4.1.0" rel="stylesheet" th:href="@{~/css/style.css}"/>
 
-	<head>
+</head>
 
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body class="gray-bg top-navigation">
+<div class="row border-bottom white-bg">
+    <nav class="navbar navbar-static-top" role="navigation">
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
+                    class="navbar-toggle collapsed"
+                    type="button">
+                <i class="fa fa-reorder"></i>
+            </button>
+            <a href="#" class="navbar-brand">Hplus</a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a aria-expanded="false" role="button" th:href="@{/}"> 返回首页</a>
+                </li>
+                <li class="dropdown">
+                    <a aria-expanded="false" role="button" href="#">全部文章</a>
+                </li>
+                <li class="dropdown">
+                    <a aria-expanded="false" role="button" href="#">资源下载</a>
+                </li>
+                <li class="dropdown">
+                    <a aria-expanded="false" role="button" href="#">关于</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-check"></i>管理员
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="wrapper wrapper-content  animated fadeInRight article">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="text-center article-title">
 
+                        <h1 th:name="articleTitle" th:text="${article.articleTitle}">
+                            自行车都智能化了，你可知道它的历史？
+                        </h1>
+                    </div>
+                    <!--                    内容部分-->
+                    <div id="articleContent" th:utext="${article.articleContent}">
+                        <p>
+                            在不少旁观者的眼里，智能化几乎成了一种避之唯恐不及的“瘟疫”，开始攀附上大大小小、各式各样的工具和设备，从水杯、灯泡、体重秤这样的小物件，再到冰箱、洗衣机这些生活中的庞然大物。
+                        </p>
+                        <p>
+                            兜兜转转之后，这场“瘟疫”又找上了在生活中不那么起眼的自行车。然而，在搭上智能化的顺风车之前，你可知道自行车的历史？虽然，在乐视超级自行车的发布会上，它已经用了自行车史上有着重要地位的三个名字——斯塔利、西夫拉克、阿尔普迪埃——来命名自家的自行车，但那远远不够。Gizmodo
+                            为我们梳理了自行车发展的关键节点。
+                        </p>
+                        <p>
+                            在开始之前，我们先来看看丹麦的设计师制作的动画，一分钟看完自行车近 200 年的演变。
+                        </p>
+                        <p>
+                            比较公认的说法是，第一辆自行车由法国手工艺人西夫拉克（Médé de
+                            Sivrac）设计，在两个轮子上安装了支架并配上马鞍，前进的话需要用脚蹬地提供动力。这还只是一个很简单的雏形，没有方向舵，转弯的时候需要骑行者下车抬起前轮，稳定性也不好。
+                        </p>
+                        <p>
+                            德国人杜莱斯（Karl Drais von Sauerbronn）制作了一辆和西夫拉克的设计相近的两轮车子，增加了车把，可以改变行进中的方向，速度可以达到
+                            15km/h。不过，还是需要靠双脚蹬地提供动力。
+                        </p>
+                        <p>
+                            这时候第一辆真正意义上的自行车诞生了，是由苏格兰铁匠麦克米伦（Kirkpatrik Macmillan）设计的，它还有一个专门的名字——Velocipede。
+                        </p>
+                        <p>
+                            在不少旁观者的眼里，智能化几乎成了一种避之唯恐不及的“瘟疫”，开始攀附上大大小小、各式各样的工具和设备，从水杯、灯泡、体重秤这样的小物件，再到冰箱、洗衣机这些生活中的庞然大物。
+                        </p>
+                        <p>
+                            兜兜转转之后，这场“瘟疫”又找上了在生活中不那么起眼的自行车。然而，在搭上智能化的顺风车之前，你可知道自行车的历史？虽然，在乐视超级自行车的发布会上，它已经用了自行车史上有着重要地位的三个名字——斯塔利、西夫拉克、阿尔普迪埃——来命名自家的自行车，但那远远不够。Gizmodo
+                            为我们梳理了自行车发展的关键节点。
+                        </p>
+                        <p>
+                            在开始之前，我们先来看看丹麦的设计师制作的动画，一分钟看完自行车近 200 年的演变。
+                        </p>
+                        <p>
+                            比较公认的说法是，第一辆自行车由法国手工艺人西夫拉克（Médé de
+                            Sivrac）设计，在两个轮子上安装了支架并配上马鞍，前进的话需要用脚蹬地提供动力。这还只是一个很简单的雏形，没有方向舵，转弯的时候需要骑行者下车抬起前轮，稳定性也不好。
+                        </p>
+                        <p>
+                            德国人杜莱斯（Karl Drais von Sauerbronn）制作了一辆和西夫拉克的设计相近的两轮车子，增加了车把，可以改变行进中的方向，速度可以达到
+                            15km/h。不过，还是需要靠双脚蹬地提供动力。
+                        </p>
+                        <p>
+                            这时候第一辆真正意义上的自行车诞生了，是由苏格兰铁匠麦克米伦（Kirkpatrik Macmillan）设计的，它还有一个专门的名字——Velocipede。
+                        </p>
+                        <p>
+                            在不少旁观者的眼里，智能化几乎成了一种避之唯恐不及的“瘟疫”，开始攀附上大大小小、各式各样的工具和设备，从水杯、灯泡、体重秤这样的小物件，再到冰箱、洗衣机这些生活中的庞然大物。
+                        </p>
+                        <p>
+                            兜兜转转之后，这场“瘟疫”又找上了在生活中不那么起眼的自行车。然而，在搭上智能化的顺风车之前，你可知道自行车的历史？虽然，在乐视超级自行车的发布会上，它已经用了自行车史上有着重要地位的三个名字——斯塔利、西夫拉克、阿尔普迪埃——来命名自家的自行车，但那远远不够。Gizmodo
+                            为我们梳理了自行车发展的关键节点。
+                        </p>
+                        <p>
+                            在开始之前，我们先来看看丹麦的设计师制作的动画，一分钟看完自行车近 200 年的演变。
+                        </p>
+                        <p>
+                            比较公认的说法是，第一辆自行车由法国手工艺人西夫拉克（Médé de
+                            Sivrac）设计，在两个轮子上安装了支架并配上马鞍，前进的话需要用脚蹬地提供动力。这还只是一个很简单的雏形，没有方向舵，转弯的时候需要骑行者下车抬起前轮，稳定性也不好。
+                        </p>
+                        <p>
+                            德国人杜莱斯（Karl Drais von Sauerbronn）制作了一辆和西夫拉克的设计相近的两轮车子，增加了车把，可以改变行进中的方向，速度可以达到
+                            15km/h。不过，还是需要靠双脚蹬地提供动力。
+                        </p>
+                        <p>
+                            这时候第一辆真正意义上的自行车诞生了，是由苏格兰铁匠麦克米伦（Kirkpatrik Macmillan）设计的，它还有一个专门的名字——Velocipede。
+                        </p>
+                        <p>
+                            在不少旁观者的眼里，智能化几乎成了一种避之唯恐不及的“瘟疫”，开始攀附上大大小小、各式各样的工具和设备，从水杯、灯泡、体重秤这样的小物件，再到冰箱、洗衣机这些生活中的庞然大物。
+                        </p>
+                        <p>
+                            兜兜转转之后，这场“瘟疫”又找上了在生活中不那么起眼的自行车。然而，在搭上智能化的顺风车之前，你可知道自行车的历史？虽然，在乐视超级自行车的发布会上，它已经用了自行车史上有着重要地位的三个名字——斯塔利、西夫拉克、阿尔普迪埃——来命名自家的自行车，但那远远不够。Gizmodo
+                            为我们梳理了自行车发展的关键节点。
+                        </p>
+                        <p>
+                            在开始之前，我们先来看看丹麦的设计师制作的动画，一分钟看完自行车近 200 年的演变。
+                        </p>
+                        <p>
+                            比较公认的说法是，第一辆自行车由法国手工艺人西夫拉克（Médé de
+                            Sivrac）设计，在两个轮子上安装了支架并配上马鞍，前进的话需要用脚蹬地提供动力。这还只是一个很简单的雏形，没有方向舵，转弯的时候需要骑行者下车抬起前轮，稳定性也不好。
+                        </p>
+                        <p>
+                            德国人杜莱斯（Karl Drais von Sauerbronn）制作了一辆和西夫拉克的设计相近的两轮车子，增加了车把，可以改变行进中的方向，速度可以达到
+                            15km/h。不过，还是需要靠双脚蹬地提供动力。
+                        </p>
+                        <p>
+                            这时候第一辆真正意义上的自行车诞生了，是由苏格兰铁匠麦克米伦（Kirkpatrik Macmillan）设计的，它还有一个专门的名字——Velocipede。
+                        </p>
+                    </div>
 
-		<title>H+ 后台主题UI框架 - 文章页面</title>
-		<meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
-		<meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+                    <div class="footer navbar-fixed-bottom">
+                        <div class="pull-right">
+                            By：<a href="http://www.salthai.top/" target="_blank">salthai's blog</a>
+                        </div>
 
-		<link rel="shortcut icon" href="favicon.ico">
-		<link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-		<link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+                        <div>
+                            <strong>Copyright</strong> H+ &copy; 2014
+                        </div>
 
-		<link href="css/animate.css" rel="stylesheet">
-		<link href="css/style.css?v=4.1.0" rel="stylesheet">
+                    </div>
 
-	</head>
+                </div>
 
-	<body class="gray-bg top-navigation">
-		<div class="row border-bottom white-bg">
-			<nav class="navbar navbar-static-top" role="navigation">
-				<div class="navbar-header">
-					<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed"
-					 type="button">
-						<i class="fa fa-reorder"></i>
-					</button>
-					<a href="#" class="navbar-brand">Hplus</a>
-				</div>
-				<div class="navbar-collapse collapse" id="navbar">
-					<ul class="nav navbar-nav">
-						<li class="active">
-							<a aria-expanded="false" role="button" href="index.html"> 返回首页</a>
-						</li>
-						<li class="dropdown">
-							<a aria-expanded="false" role="button" href="articleList.html">全部文章</a>
-						</li>
-						<li class="dropdown">
-							<a aria-expanded="false" role="button" href="resource.html">资源下载</a>
-						</li>
-						<li class="dropdown">
-							<a aria-expanded="false" role="button" href="about.html">关于</a>
-						</li>
-					</ul>
-					<ul class="nav navbar-top-links navbar-right">
-						<li>
-							<a href="login.html">
-								<i class="fa fa-check"></i>管理员
-							</a>
-						</li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-		<div class="wrapper wrapper-content  animated fadeInRight article">
-			<div class="row">
-				<div class="col-lg-10 col-lg-offset-1">
-					<div class="ibox">
-						<div class="ibox-content">
-							<!-- 标签 -->
-							<div class="pull-right">
-								<button class="btn btn-white btn-xs" type="button">700BIKE</button>
-								<button class="btn btn-white btn-xs" type="button">BeginOne</button>
-								<button class="btn btn-white btn-xs" type="button">乐视超级自行车</button>
-							</div>
-							<div class="text-center article-title">
-								<h1>
-									自行车都智能化了，你可知道它的历史？
-								</h1>
-							</div>
-							<p>
-								在不少旁观者的眼里，智能化几乎成了一种避之唯恐不及的“瘟疫”，开始攀附上大大小小、各式各样的工具和设备，从水杯、灯泡、体重秤这样的小物件，再到冰箱、洗衣机这些生活中的庞然大物。
-							</p>
-							<p>
-								兜兜转转之后，这场“瘟疫”又找上了在生活中不那么起眼的自行车。然而，在搭上智能化的顺风车之前，你可知道自行车的历史？虽然，在乐视超级自行车的发布会上，它已经用了自行车史上有着重要地位的三个名字——斯塔利、西夫拉克、阿尔普迪埃——来命名自家的自行车，但那远远不够。Gizmodo
-								为我们梳理了自行车发展的关键节点。
-							</p>
-							<p>
-								在开始之前，我们先来看看丹麦的设计师制作的动画，一分钟看完自行车近 200 年的演变。
-							</p>
-							<p>
-								比较公认的说法是，第一辆自行车由法国手工艺人西夫拉克（Médé de
-								Sivrac）设计，在两个轮子上安装了支架并配上马鞍，前进的话需要用脚蹬地提供动力。这还只是一个很简单的雏形，没有方向舵，转弯的时候需要骑行者下车抬起前轮，稳定性也不好。
-							</p>
-							<p>
-								德国人杜莱斯（Karl Drais von Sauerbronn）制作了一辆和西夫拉克的设计相近的两轮车子，增加了车把，可以改变行进中的方向，速度可以达到 15km/h。不过，还是需要靠双脚蹬地提供动力。
-							</p>
-							<p>
-								这时候第一辆真正意义上的自行车诞生了，是由苏格兰铁匠麦克米伦（Kirkpatrik Macmillan）设计的，它还有一个专门的名字——Velocipede。
-							</p>
-							<p>
-								在不少旁观者的眼里，智能化几乎成了一种避之唯恐不及的“瘟疫”，开始攀附上大大小小、各式各样的工具和设备，从水杯、灯泡、体重秤这样的小物件，再到冰箱、洗衣机这些生活中的庞然大物。
-							</p>
-							<p>
-								兜兜转转之后，这场“瘟疫”又找上了在生活中不那么起眼的自行车。然而，在搭上智能化的顺风车之前，你可知道自行车的历史？虽然，在乐视超级自行车的发布会上，它已经用了自行车史上有着重要地位的三个名字——斯塔利、西夫拉克、阿尔普迪埃——来命名自家的自行车，但那远远不够。Gizmodo
-								为我们梳理了自行车发展的关键节点。
-							</p>
-							<p>
-								在开始之前，我们先来看看丹麦的设计师制作的动画，一分钟看完自行车近 200 年的演变。
-							</p>
-							<p>
-								比较公认的说法是，第一辆自行车由法国手工艺人西夫拉克（Médé de
-								Sivrac）设计，在两个轮子上安装了支架并配上马鞍，前进的话需要用脚蹬地提供动力。这还只是一个很简单的雏形，没有方向舵，转弯的时候需要骑行者下车抬起前轮，稳定性也不好。
-							</p>
-							<p>
-								德国人杜莱斯（Karl Drais von Sauerbronn）制作了一辆和西夫拉克的设计相近的两轮车子，增加了车把，可以改变行进中的方向，速度可以达到 15km/h。不过，还是需要靠双脚蹬地提供动力。
-							</p>
-							<p>
-								这时候第一辆真正意义上的自行车诞生了，是由苏格兰铁匠麦克米伦（Kirkpatrik Macmillan）设计的，它还有一个专门的名字——Velocipede。
-							</p>
-							<p>
-								在不少旁观者的眼里，智能化几乎成了一种避之唯恐不及的“瘟疫”，开始攀附上大大小小、各式各样的工具和设备，从水杯、灯泡、体重秤这样的小物件，再到冰箱、洗衣机这些生活中的庞然大物。
-							</p>
-							<p>
-								兜兜转转之后，这场“瘟疫”又找上了在生活中不那么起眼的自行车。然而，在搭上智能化的顺风车之前，你可知道自行车的历史？虽然，在乐视超级自行车的发布会上，它已经用了自行车史上有着重要地位的三个名字——斯塔利、西夫拉克、阿尔普迪埃——来命名自家的自行车，但那远远不够。Gizmodo
-								为我们梳理了自行车发展的关键节点。
-							</p>
-							<p>
-								在开始之前，我们先来看看丹麦的设计师制作的动画，一分钟看完自行车近 200 年的演变。
-							</p>
-							<p>
-								比较公认的说法是，第一辆自行车由法国手工艺人西夫拉克（Médé de
-								Sivrac）设计，在两个轮子上安装了支架并配上马鞍，前进的话需要用脚蹬地提供动力。这还只是一个很简单的雏形，没有方向舵，转弯的时候需要骑行者下车抬起前轮，稳定性也不好。
-							</p>
-							<p>
-								德国人杜莱斯（Karl Drais von Sauerbronn）制作了一辆和西夫拉克的设计相近的两轮车子，增加了车把，可以改变行进中的方向，速度可以达到 15km/h。不过，还是需要靠双脚蹬地提供动力。
-							</p>
-							<p>
-								这时候第一辆真正意义上的自行车诞生了，是由苏格兰铁匠麦克米伦（Kirkpatrik Macmillan）设计的，它还有一个专门的名字——Velocipede。
-							</p>
-							<p>
-								在不少旁观者的眼里，智能化几乎成了一种避之唯恐不及的“瘟疫”，开始攀附上大大小小、各式各样的工具和设备，从水杯、灯泡、体重秤这样的小物件，再到冰箱、洗衣机这些生活中的庞然大物。
-							</p>
-							<p>
-								兜兜转转之后，这场“瘟疫”又找上了在生活中不那么起眼的自行车。然而，在搭上智能化的顺风车之前，你可知道自行车的历史？虽然，在乐视超级自行车的发布会上，它已经用了自行车史上有着重要地位的三个名字——斯塔利、西夫拉克、阿尔普迪埃——来命名自家的自行车，但那远远不够。Gizmodo
-								为我们梳理了自行车发展的关键节点。
-							</p>
-							<p>
-								在开始之前，我们先来看看丹麦的设计师制作的动画，一分钟看完自行车近 200 年的演变。
-							</p>
-							<p>
-								比较公认的说法是，第一辆自行车由法国手工艺人西夫拉克（Médé de
-								Sivrac）设计，在两个轮子上安装了支架并配上马鞍，前进的话需要用脚蹬地提供动力。这还只是一个很简单的雏形，没有方向舵，转弯的时候需要骑行者下车抬起前轮，稳定性也不好。
-							</p>
-							<p>
-								德国人杜莱斯（Karl Drais von Sauerbronn）制作了一辆和西夫拉克的设计相近的两轮车子，增加了车把，可以改变行进中的方向，速度可以达到 15km/h。不过，还是需要靠双脚蹬地提供动力。
-							</p>
-							<p>
-								这时候第一辆真正意义上的自行车诞生了，是由苏格兰铁匠麦克米伦（Kirkpatrik Macmillan）设计的，它还有一个专门的名字——Velocipede。
-							</p>
-							<hr>
-
-							<div class="footer navbar-fixed-bottom">
-								<div class="pull-right">
-									By：<a href="http://www.salthai.top/" target="_blank">salthai's blog</a>
-								</div>
-
-								<div>
-									<strong>Copyright</strong> H+ &copy; 2014
-								</div>
-
-							</div>
-
-						</div>
-
-						<!-- 全局js -->
-						<script src="js/jquery.min.js?v=2.1.4"></script>
-						<script src="js/bootstrap.min.js?v=3.3.6"></script>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 全局js -->
+<script src="js/jquery.min.js?v=2.1.4" th:href="@{~/js/jquery.min.js}"></script>
+<script src="js/bootstrap.min.js?v=3.3.6" th:href="@{~/js/bootstrap.min.js}"></script>
 
 
+<!-- 自定义js -->
+<script src="js/content.js?v=1.0.0" th:href="@{~/js/content.js}"></script>
 
-						<!-- 自定义js -->
-						<script src="js/content.js?v=1.0.0"></script>
 
-
-						<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
-						<!--统计代码，可删除-->
-
-	</body>
-
+</body>
 </html>

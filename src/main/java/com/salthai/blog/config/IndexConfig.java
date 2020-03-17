@@ -1,5 +1,6 @@
 package com.salthai.blog.config;
 
+import com.salthai.blog.controller.ArticleController;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

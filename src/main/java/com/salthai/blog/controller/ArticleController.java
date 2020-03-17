@@ -7,6 +7,8 @@ import com.salthai.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,8 +29,8 @@ public class ArticleController {
      * index
      *
      * @param modelMap
-     * @param start
-     * @param size
+     * @param start    从0开始
+     * @param size     每页6条
      * @return
      * @throws Exception
      */
@@ -41,6 +43,50 @@ public class ArticleController {
         List<Article> articleList = articleService.getArticleShowList(1);
         PageInfo<Article> pageInfo = new PageInfo<>(articleList);
         modelMap.addAttribute("pageInfo", pageInfo);
+        System.out.println("------/success------");
         return "index";
     }
+
+    /**
+     * 详情页
+     *
+     * @param modelMap
+     * @param articleId
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/article/getArticle/{articleId}")
+    public String getArticleByArticleId(@PathVariable int articleId, ModelMap modelMap)
+            throws Exception {
+        Article article = articleService.getArticleByArticleId(articleId);
+        modelMap.addAttribute("article", article);
+        System.out.println("------/article/{articleId} success------");
+        return "article";
+    }
+
+    /**
+     * 文章分类页
+     *
+     * @param modelMap
+     * @param start    从0开始
+     * @param size     每页6条
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/article/getArticleBelong/{categoryId}")
+    public String articleCategoryList(ModelMap modelMap, @PathVariable int categoryId,
+                                      @RequestParam(value = "start", defaultValue = "0") int start,
+                                      @RequestParam(value = "size", defaultValue = "6") int size)
+            throws Exception {
+        PageHelper.startPage(start, size);
+        int articleBelong = categoryId;
+        List<Article> articleList = articleService.getArticleBelongList(articleBelong);
+        PageInfo<Article> articleBelongList = new PageInfo<>(articleList);
+        modelMap.addAttribute("articleBelongList", articleBelongList);
+        modelMap.addAttribute("articleBelong", articleBelong);
+        System.out.println("------/category/{articleBelong} success------");
+        return "articleList";
+
+    }
+
 }

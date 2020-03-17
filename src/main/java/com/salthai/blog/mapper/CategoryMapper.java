@@ -51,7 +51,7 @@ public interface CategoryMapper {
             //        column属性指定内容：用户根据 uid 查询账户是所需要的参数，当前uid是articleBelong
             //        fetchType属性指定内容:指定延时查询FetchType.LAZY或立即查询FetchType.EAGER
             @Result(property = "articles", column = "articleBelong",
-                    many = @Many(select = "com.salthai.blog.mapper.ArticleMapper.findByArticleBelong",
+                    many = @Many(select = "mapper.ArticleMapper.findByArticleBelong",
                             fetchType = FetchType.LAZY))
     })
     @Select("select * from category where categoryId=#{categoryId}")

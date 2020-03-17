@@ -4,12 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>blog</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css?v=4.1.0" rel="stylesheet">
-
+    <!--    <link rel="shortcut icon" href="favicon.ico" th:href="@{~/templates/favicon.ico}">-->
+    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
+    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet" th:href="@{~/css/font-awesome.css}"/>
+    <link href="css/animate.css" rel="stylesheet" th:href="@{~/css/animate.css}"/>
+    <link href="css/style.css?v=4.1.0" rel="stylesheet" th:href="@{~/css/style.css}"/>
 </head>
 
 <body class="gray-bg top-navigation">
@@ -32,10 +31,10 @@
                             <a aria-expanded="false" role="button" th:href="@{/}"> 返回首页</a>
                         </li>
                         <li class="dropdown">
-                            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle"
-                               data-toggle="dropdown"> 文章分类 <span
-                                    class="caret"></span></a>
-                            <ul role="menu" class="dropdown-menu">
+                            <a aria-expanded="false" role="button" class="dropdown-toggle" data-toggle="dropdown"
+                               onclick="allCategory()"> 文章分类
+                                <span class="caret"></span></a>
+                            <ul role="menu" class="dropdown-menu" id="categoryItem">
                                 <!-- 分类列表 -->
                                 <li><a href="articleList.html">全部</a>
                                 </li>
@@ -43,6 +42,8 @@
                                 </li>
                                 <li><a href="articleList.html">生活</a>
                                 </li>
+
+                                <li><a>categoryName</a></li>
 
                             </ul>
                         </li>
@@ -67,31 +68,28 @@
         <div class="wrapper wrapper-content  animated fadeInRight blog">
             <div class="row">
                 <tr th:each="article:${pageInfo.list}">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="ibox">
                             <div class="ibox-content">
-                                <a href="article.html" class="btn-link">
+                                <!--                                处理链接问题-->
+                                <!--/*@thymesVar id="articleId" type="templates"*/-->
+                                <a th:href="@{/article/getArticle/{articleId}(articleId=${article.articleId})}"
+                                   class=" btn-link">
                                     <h2 th:name="articleTitle" th:text="${article.articleTitle}">
                                         半数用户弃用 Apple Music？苹果发话了
                                     </h2>
                                 </a>
                                 <div class="small m-b-xs">
                                     <strong th:name="articleAuthor" th:text="${article.articleAuthor}">周 欣</strong>
-                                    <span class="text-muted"><i
-                                            class="fa fa-clock-o"></i> 3 小时前</span>
+                                    <span class="text-muted"><i class="fa fa-clock-o"></i>   <strong
+                                            th:name="articleAuthor" th:text="${article.articleTime}">周 欣</strong></span>
                                 </div>
-                                <p>
+                                <p th:name="articleDepict" th:text="${article.articleDepict}">
                                     前不久，苹果公司高级副总裁 Eddy Cue 还在宣称 Apple Music 试用期用户超 1100 万，最近就有一份来自 MusicWatch
                                     的调查报告，让人大跌眼镜。
                                 </p>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <h5>标签：</h5>
-                                        <button class="btn btn-primary btn-xs" type="button">调查</button>
-                                        <button class="btn btn-white btn-xs" type="button">用户</button>
-                                        <button class="btn btn-white btn-xs" type="button">Apple Music</button>
-                                    </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="small text-right">
                                             <h5>状态：</h5>
                                             <div><i class="fa fa-comments-o"> </i> 36 评论</div>
@@ -102,21 +100,25 @@
                             </div>
                         </div>
                     </div>
-                </tr>
 
+                </tr>
             </div>
 
             <div align="center">
+                <!--/*@thymesVar id="categoryName" type="templates"*/-->
                 <div class="btn-group">
-                    <button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i>
+                    <button type="button" class="btn btn-white"><a th:href="@{/(start=${pageInfo.pageNum-1})}"><i
+                            class="fa fa-chevron-left"></i></a>
                     </button>
-                    <button class="btn btn-white  active">1</button>
-                    <button class="btn btn-white">2</button>
-                    <button class="btn btn-white">3</button>
-                    <button class="btn btn-white">4</button>
-                    <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i>
+                    <button class="btn btn-white"><a th:href="@{/(start=${pageInfo.nextPage})}">1</a></button>
+                    <button class="btn btn-white"><a th:href="@{/(start=${pageInfo.nextPage})}">2</a></button>
+                    <button class="btn btn-white"><a th:href="@{/(start=${pageInfo.nextPage})}">3</a></button>
+                    <button class="btn btn-white"><a th:href="@{/(start=${pageInfo.nextPage})}">4</a></button>
+                    <button type="button" class="btn btn-white"><a th:href="@{/(start=${pageInfo.pageNum+1})}"><i
+                            class="fa fa-chevron-right"></i></a>
                     </button>
                 </div>
+
             </div>
         </div>
 
@@ -162,6 +164,28 @@
 
 <!-- Peity demo -->
 <script src="js/demo/peity-demo.js"></script>
+<script>
+    function allCategory() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/category",
+            async: true,
+            cache: true,
+            dataType: "json",
+            success: function (data) {
+                var str = "";
+                str += "<ul><li><a>categoryName</a></li></ul>";
+                $.each(data, function (index, category) {
+                    str += "<li><a>+category['categoryName']+</a></li>";
+                })
+                $('categoryItem').append(str);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("error");
+            }
+        });
+    }
+</script>
 </body>
 
 </html>

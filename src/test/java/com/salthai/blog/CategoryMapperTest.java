@@ -24,6 +24,7 @@ public class CategoryMapperTest {
     @Test
     public void findAllCategory() {
         List<Category> categoryList = categoryMapper.findAllCategory();
+
         System.out.println(categoryList);
     }
 
