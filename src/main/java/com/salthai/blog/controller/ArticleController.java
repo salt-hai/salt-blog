@@ -86,7 +86,18 @@ public class ArticleController {
         modelMap.addAttribute("articleBelong", articleBelong);
         System.out.println("------/category/{articleBelong} success------");
         return "articleList";
-
     }
 
+    @RequestMapping("/article/allArticle")
+    public String allArticleList(ModelMap modelMap,
+                                 @RequestParam(value = "start", defaultValue = "0") int start,
+                                 @RequestParam(value = "size", defaultValue = "6") int size)
+            throws Exception {
+        PageHelper.startPage(start, size);
+        List<Article> articleList = articleService.getAllArticle();
+        PageInfo<Article> allArticleList = new PageInfo<>(articleList);
+        modelMap.addAttribute("articleBelongList", allArticleList);
+        System.out.println("------/article/allArticle success------");
+        return "articleList";
+    }
 }

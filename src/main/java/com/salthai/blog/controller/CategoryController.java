@@ -31,9 +31,10 @@ public class CategoryController {
      */
     @ResponseBody
     @GetMapping("/category")
-    public JsonResult<List> getAllCategory() {
+    public List<Category> getAllCategory() {
         List<Category> categoryList = categoryService.findAllCategory();
         System.out.println("启动成功/category");
-        return new JsonResult<>(categoryList, "success");
+//        return new JsonResult<>(categoryList, "success");
+        return categoryList;
     }
 }

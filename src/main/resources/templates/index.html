@@ -32,19 +32,12 @@
                         </li>
                         <li class="dropdown">
                             <a aria-expanded="false" role="button" class="dropdown-toggle" data-toggle="dropdown"
-                               onclick="allCategory()"> 文章分类
+                               onclick="allCategory()" id="dropDownId"> 文章分类
                                 <span class="caret"></span></a>
-                            <ul role="menu" class="dropdown-menu" id="categoryItem">
-                                <!-- 分类列表 -->
-                                <li><a href="articleList.html">全部</a>
+                            <ul role="menu" class="dropdown-menu" id="categoryItem" aria-labelledby="dropDownId">
+                                <!-- 分类列表使用Ajax请求-->
+                                <li><a th:href="@{/article/allArticle}">全部</a>
                                 </li>
-                                <li><a href="articleList.html">技术</a>
-                                </li>
-                                <li><a href="articleList.html">生活</a>
-                                </li>
-
-                                <li><a>categoryName</a></li>
-
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -166,19 +159,20 @@
 <script src="js/demo/peity-demo.js"></script>
 <script>
     function allCategory() {
+        a = 0;
         $.ajax({
             type: "GET",
             url: "http://localhost:8080/category",
-            async: true,
-            cache: true,
+            async: false,
+            cache: false,
             dataType: "json",
             success: function (data) {
-                var str = "";
-                str += "<ul><li><a>categoryName</a></li></ul>";
-                $.each(data, function (index, category) {
-                    str += "<li><a>+category['categoryName']+</a></li>";
-                })
-                $('categoryItem').append(str);
+                $.each(data, function (index, categories) {
+                    if (a == 0) {
+                        $("#categoryItem").append("<li><a href='#'>" + categories.categoryName + "</a></li>");
+                    }
+                    return;
+                });
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("error");
@@ -187,5 +181,4 @@
     }
 </script>
 </body>
-
 </html>

@@ -43,7 +43,7 @@ public class ArticleService {
     }
 
     /**
-     * 获取转换后的article对象集合
+     * 获取转换后的article对象集合,工具方法
      *
      * @param articleList
      * @return articleListHtml
@@ -82,5 +82,15 @@ public class ArticleService {
         articleHtml.setArticleBelong(article.getArticleBelong());
         articleHtml.setArticleShow(article.getArticleShow());
         return articleHtml;
+    }
+
+    /**
+     * 查看全部文章
+     *
+     * @return allArticleHtmlList
+     */
+    public List<Article> getAllArticle() {
+        List<Article> allArticle = articleMapper.findAllArticle();
+        return getArticleHtml(allArticle);
     }
 }
