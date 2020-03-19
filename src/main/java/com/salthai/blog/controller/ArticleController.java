@@ -7,12 +7,10 @@ import com.salthai.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -81,6 +79,7 @@ public class ArticleController {
         PageHelper.startPage(start, size);
         int articleBelong = categoryId;
         List<Article> articleList = articleService.getArticleBelongList(articleBelong);
+//        该分类是否有文章
         if (articleList != null && !articleList.isEmpty()) {
             PageInfo<Article> articleBelongList = new PageInfo<>(articleList);
             modelMap.addAttribute("articleBelongList", articleBelongList);
@@ -89,7 +88,7 @@ public class ArticleController {
             return "articleList";
         } else {
             System.out.println("------无数据成功执行------");
-            return "notArticle";
+            return "error";
         }
     }
 

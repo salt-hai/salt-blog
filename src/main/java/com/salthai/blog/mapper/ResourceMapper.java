@@ -31,7 +31,7 @@ public interface ResourceMapper {
      * @return links
      */
     @Select("select * from resource where resourceId= #{resourceId} ")
-    public Links findByResourceId(int resourceId);
+    public Resource findByResourceId(int resourceId);
 
     /**
      * 添加一条链接
@@ -44,7 +44,7 @@ public interface ResourceMapper {
     public int addResource(Resource resource);
 
     /**
-     * 修改链接内容
+     * 修改资源内容
      *
      * @param resource
      * @return int
@@ -54,7 +54,7 @@ public interface ResourceMapper {
     public int updateResource(Resource resource);
 
     /**
-     * 删除一条链接
+     * 删除一条资源
      *
      * @param resourceId
      * @return int
