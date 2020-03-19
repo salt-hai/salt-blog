@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,7 +64,7 @@
         <div class="wrapper wrapper-content  animated fadeInRight blog">
             <div class="row">
                 <!--/*@thymesVar id="pageInfo" type="templates"*/-->
-                <tr th:each="article:${articleBelongList.list}">
+                <tr th:each="article:${allArticleList.list}">
                     <div class="col-lg-6">
                         <div class="ibox">
                             <div class="ibox-content">
@@ -103,32 +102,32 @@
             <div align="center">
                 <!--/*@thymesVar id="categoryName" type="templates"*/-->
                 <!--                articleBelong哪里去取-->
+                <!--                <p th:text="${articleBelong}"></p>-->
                 <div class="btn-group">
                     <button type="button" class="btn btn-white"><a
-                            th:href="@{'/article/getArticleBelong/'+${categoryId}(start=${articleBelongList.pageNum-1})}"><i
+                            th:href="@{/article/allArticle(start=${allArticleList.pageNum-1})}"><i
                             class="fa fa-chevron-left"></i></a>
                     </button>
                     <button class="btn btn-white"><a
-                            th:href="@{'/article/getArticleBelong/'+${categoryId}(start=${articleBelongList.nextPage})}">1</a>
+                            th:href="@{/article/allArticle(start=${allArticleList.nextPage})}">1</a>
                     </button>
                     <button class="btn btn-white"><a
-                            th:href="@{'/article/getArticleBelong/'+${categoryId}(start=${articleBelongList.nextPage})}">2</a>
+                            th:href="@{/article/allArticle(start=${allArticleList.nextPage})}">2</a>
                     </button>
                     <button class="btn btn-white"><a
-                            th:href="@{'/article/getArticleBelong/'+${categoryId}(start=${articleBelongList.nextPage})}">3</a>
+                            th:href="@{/article/allArticle(start=${allArticleList.nextPage})}">3</a>
                     </button>
                     <button class="btn btn-white"><a
-                            th:href="@{'/article/getArticleBelong/'+${categoryId}(start=${articleBelongList.nextPage})}">4</a>
+                            th:href="@{/article/allArticle(start=${allArticleList.nextPage})}">4</a>
                     </button>
                     <!--                    下一页-->
                     <button type="button" class="btn btn-white"><a
-                            th:href="@{'/article/getArticleBelong/'+${categoryId}(start=${articleBelongList.pageNum+1})}"><i
+                            th:href="@{/article/allArticle(start=${allArticleList.pageNum+1})}"><i
                             class="fa fa-chevron-right"></i></a>
                     </button>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -139,40 +138,32 @@
     </div>
 
     <div>
-        <strong>Copyright</strong> H+ &copy; 2020
+        <strong>Copyright</strong> H+ &copy; 2014
     </div>
 
 </div>
 <!-- 全局js -->
-<script src="js/jquery.min.js?v=2.1.4" th:src="@{~/js/jquery.min.js}"></script>
-<script src="js/bootstrap.min.js?v=3.3.6" th:src="@{~/js/bootstrap.min.js}"></script>
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<script src="js/bootstrap.min.js?v=3.3.6"></script>
 
 
 <!-- 自定义js -->
-<script src="js/content.js?v=1.0.0" th:src="@{~/js/content.js}"></script>
+<script src="js/content.js?v=1.0.0"></script>
 
 
 <!-- Flot -->
-<script src="js/plugins/flot/jquery.flot.js"
-        th:src="@{~/js/plugins/flot/jquery.flot.js}"></script>
-<script src="js/plugins/flot/jquery.flot.tooltip.min.js"
-        th:src="@{~/js/plugins/flot/jquery.flot.tooltip.min.js}"></script>
-<script src="js/plugins/flot/jquery.flot.resize.js"
-        th:src="@{~/js/plugins/flot/jquery.flot.resize.js}"></script>
+<script src="js/plugins/flot/jquery.flot.js"></script>
+<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="js/plugins/flot/jquery.flot.resize.js"></script>
 
 <!-- ChartJS-->
-<script src="js/plugins/chartJs/Chart.min.js"
-        th:src="@{~/js/plugins/chartJs/Chart.min.js}"></script>
+<script src="js/plugins/chartJs/Chart.min.js"></script>
 
 <!-- Peity -->
-<script src="js/plugins/peity/jquery.peity.min.js"
-        th:src="@{~/js/plugins/peity/jquery.peity.min.js}"></script>
+<script src="js/plugins/peity/jquery.peity.min.js"></script>
 
 <!-- Peity demo -->
-<script src="js/demo/peity-demo.js"
-        th:src="@{~/js/demo/peity-demo.js}"></script>
-
-
+<script src="js/demo/peity-demo.js"></script>
 
 <script>
     function allCategory() {

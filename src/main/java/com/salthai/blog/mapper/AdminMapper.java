@@ -20,7 +20,7 @@ public interface AdminMapper {
      * @return List
      */
     @Select("select * from admin")
-    public List<Admin> findAllAdmin();
+    public Admin findAllAdmin();
 
     /**
      * 根据用户名密码查询管理员
@@ -37,7 +37,7 @@ public interface AdminMapper {
      * @param admin
      * @return int
      */
-    @Insert(" insert into admin ( username,password,adminAddress,adminAbout) values (#{username},#{password}," +
+    @Insert(" insert into admin ( username,nickName,password,adminAddress,adminAbout) values (#{username},#{nickName},#{password}," +
             "#{adminAddress},#{adminAbout}) ")
     public int addAdmin(Admin admin);
 
@@ -74,7 +74,6 @@ public interface AdminMapper {
      * @param admin
      * @return int
      */
-    @Update("update admin set username=#{username},adminAddress=#{adminAddress},adminAbout=#{adminAbout}" +
-            " where adminId=#{adminId} ")
+    @Update("update admin set username=#{username},nickName=#{nickName},adminAddress=#{adminAddress},adminAbout=#{adminAbout} where adminId=#{adminId}")
     public int updateAdminInfo(Admin admin);
 }

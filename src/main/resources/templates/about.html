@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>关于</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" th:href="@{~/favicon.ico}"/>
+    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
+    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet" th:href="@{~/css/font-awesome.css}"/>
+    <link href="css/animate.css" rel="stylesheet" th:href="@{~/css/animate.css}"/>
+    <link href="css/style.css?v=4.1.0" rel="stylesheet" th:href="@{~/css/style.css}"/>
 
 </head>
 
@@ -29,7 +29,7 @@
                 <div class="navbar-collapse collapse" id="navbar">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a aria-expanded="false" role="button" href="index.html"> 返回首页</a>
+                            <a aria-expanded="false" role="button" th:href="@{/}"> 返回首页</a>
                         </li>
                         <li class="dropdown">
                             <a aria-expanded="false" role="button" href="#" class="dropdown-toggle"
@@ -37,11 +37,13 @@
                                     class="caret"></span></a>
                             <ul role="menu" class="dropdown-menu">
                                 <!-- 分类列表 -->
-                                <li><a href="articleList.html">全部</a>
+                                <li><a th:href="@{/article/allArticle}">全部</a>
                                 </li>
-                                <li><a href="articleList.html">技术</a>
+                                <li><a th:href="@{/article/getArticleBelong/1}">技术</a>
                                 </li>
-                                <li><a href="articleList.html">生活</a>
+                                <li><a th:href="@{/article/getArticleBelong/2}">生活</a>
+                                </li>
+                                <li><a th:href="@{/article/getArticleBelong/0}">其他</a>
                                 </li>
 
                             </ul>
@@ -71,11 +73,15 @@
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
-                            <img alt="image" class="img-responsive" src="img/profile_big.jpg">
+                            <img alt="image" class="img-responsive" src="img/profile_big.jpg"
+                                 th:src="@{~/img/profile_big.jpg}">
                         </div>
                         <div class="ibox-content profile-content">
-                            <h4 name="username"><strong>salthai</strong></h4>
-                            <p name="adminAddress"><i class="fa fa-map-marker"></i>萍乡学院</p>
+                            <h4 id="nickName" th:text="${adminAbout.nickName}"><strong>昵称</strong></h4>
+                            <p name="adminAddress"><i class="fa fa-map-marker" th:text="${adminAbout.adminAddress}"
+                            ></i>
+
+                            </p>
                             <h5>
                                 关于我
                             </h5>
@@ -117,13 +123,16 @@
                             <!-- 图片路径 -->
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img alt="image" class="img-responsive" src="img/p_big3.jpg">
+                                    <img alt="image" class="img-responsive" src="img/p_big3.jpg"
+                                         th:src="@{~/img/p_big3.jpg}">
                                 </div>
                                 <div class="item">
-                                    <img alt="image" class="img-responsive" src="img/p_big1.jpg">
+                                    <img alt="image" class="img-responsive" src="img/p_big1.jpg"
+                                         th:src="@{~/img/p_big1.jpg}">
                                 </div>
                                 <div class="item ">
-                                    <img alt="image" class="img-responsive" src="img/p_big2.jpg">
+                                    <img alt="image" class="img-responsive" src="img/p_big2.jpg"
+                                         th:src="@{~/img/p_big2.jpg}">
                                 </div>
 
                             </div>
@@ -147,7 +156,7 @@
         </div>
 
         <div>
-            <strong>Copyright</strong> H+ &copy; 2014
+            <strong>Copyright</strong> H+ &copy; 2020
         </div>
 
     </div>
@@ -156,27 +165,33 @@
 
 
 <!-- 全局js -->
-<script src="js/jquery.min.js?v=2.1.4"></script>
-<script src="js/bootstrap.min.js?v=3.3.6"></script>
+<script src="js/jquery.min.js?v=2.1.4" th:src="@{~/js/jquery.min.js}"></script>
+<script src="js/bootstrap.min.js?v=3.3.6" th:src="@{~/js/bootstrap.min.js}"></script>
 
 
 <!-- 自定义js -->
-<script src="js/content.js?v=1.0.0"></script>
+<script src="js/content.js?v=1.0.0" th:src="@{~/js/content.js}"></script>
 
 
 <!-- Flot -->
-<script src="js/plugins/flot/jquery.flot.js"></script>
-<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="js/plugins/flot/jquery.flot.resize.js"></script>
+<script src="js/plugins/flot/jquery.flot.js"
+        th:src="@{~/js/plugins/flot/jquery.flot.js}"></script>
+<script src="js/plugins/flot/jquery.flot.tooltip.min.js"
+        th:src="@{~/js/plugins/flot/jquery.flot.tooltip.min.js}"></script>
+<script src="js/plugins/flot/jquery.flot.resize.js"
+        th:src="@{~/js/plugins/flot/jquery.flot.resize.js}"></script>
 
 <!-- ChartJS-->
-<script src="js/plugins/chartJs/Chart.min.js"></script>
+<script src="js/plugins/chartJs/Chart.min.js"
+        th:src="@{~/js/plugins/chartJs/Chart.min.js}"></script>
 
 <!-- Peity -->
-<script src="js/plugins/peity/jquery.peity.min.js"></script>
+<script src="js/plugins/peity/jquery.peity.min.js"
+        th:src="@{~/js/plugins/peity/jquery.peity.min.js}"></script>
 
 <!-- Peity demo -->
-<script src="js/demo/peity-demo.js"></script>
+<script src="js/demo/peity-demo.js"
+        th:src="@{~/js/demo/peity-demo.js}"></script>
 
 
 </body>

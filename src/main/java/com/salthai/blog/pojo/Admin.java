@@ -27,6 +27,10 @@ public class Admin {
      * 管理员相关信息
      */
     private String adminAbout;
+    /**
+     * 管理员昵称
+     */
+    private String nickName;
 
     public int getAdminId() {
         return adminId;
@@ -68,6 +72,14 @@ public class Admin {
         this.adminAbout = adminAbout;
     }
 
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
     @Override
     public String toString() {
         return "Admin{" +
@@ -76,6 +88,7 @@ public class Admin {
                 ", password='" + password + '\'' +
                 ", adminAddress='" + adminAddress + '\'' +
                 ", adminAbout='" + adminAbout + '\'' +
+                ", nickName='" + nickName + '\'' +
                 '}';
     }
 }

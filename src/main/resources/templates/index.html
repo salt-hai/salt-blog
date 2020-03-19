@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>blog</title>
-    <!--    <link rel="shortcut icon" href="favicon.ico" th:href="@{~/templates/favicon.ico}">-->
+    <link rel="shortcut icon" href="favicon.ico" th:href="@{~/favicon.ico}">
     <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
     <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet" th:href="@{~/css/font-awesome.css}"/>
     <link href="css/animate.css" rel="stylesheet" th:href="@{~/css/animate.css}"/>
@@ -32,11 +32,17 @@
                         </li>
                         <li class="dropdown">
                             <a aria-expanded="false" role="button" class="dropdown-toggle" data-toggle="dropdown"
-                               onclick="allCategory()" id="dropDownId"> 文章分类
+                               id="dropDownId"> 文章分类
                                 <span class="caret"></span></a>
                             <ul role="menu" class="dropdown-menu" id="categoryItem" aria-labelledby="dropDownId">
                                 <!-- 分类列表使用Ajax请求-->
                                 <li><a th:href="@{/article/allArticle}">全部</a>
+                                </li>
+                                <li><a th:href="@{/article/getArticleBelong/1}">技术</a>
+                                </li>
+                                <li><a th:href="@{/article/getArticleBelong/2}">生活</a>
+                                </li>
+                                <li><a th:href="@{/article/getArticleBelong/0}">其他</a>
                                 </li>
                             </ul>
                         </li>
@@ -44,7 +50,7 @@
                             <a aria-expanded="false" role="button" href="resource.html">资源下载</a>
                         </li>
                         <li class="dropdown">
-                            <a aria-expanded="false" role="button" href="about.html">关于</a>
+                            <a aria-expanded="false" role="button" th:href="@{/admin/getAdminAbout}">关于</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -75,7 +81,8 @@
                                 <div class="small m-b-xs">
                                     <strong th:name="articleAuthor" th:text="${article.articleAuthor}">周 欣</strong>
                                     <span class="text-muted"><i class="fa fa-clock-o"></i>   <strong
-                                            th:name="articleAuthor" th:text="${article.articleTime}">周 欣</strong></span>
+                                            th:name="articleAuthor"
+                                            th:text="${article.articleTime}">周 欣</strong></span>
                                 </div>
                                 <p th:name="articleDepict" th:text="${article.articleDepict}">
                                     前不久，苹果公司高级副总裁 Eddy Cue 还在宣称 Apple Music 试用期用户超 1100 万，最近就有一份来自 MusicWatch
@@ -126,7 +133,7 @@
     </div>
 
     <div>
-        <strong>Copyright</strong> H+ &copy; 2014
+        <strong>Copyright</strong> H+ &copy; 2020
     </div>
 
 </div>
@@ -136,30 +143,37 @@
 
 
 <!-- 全局js -->
-<script src="js/jquery.min.js?v=2.1.4"></script>
-<script src="js/bootstrap.min.js?v=3.3.6"></script>
+<script src="js/jquery.min.js?v=2.1.4" th:src="@{~/js/jquery.min.js}"></script>
+<script src="js/bootstrap.min.js?v=3.3.6" th:src="@{~/js/bootstrap.min.js}"></script>
 
 
 <!-- 自定义js -->
-<script src="js/content.js?v=1.0.0"></script>
+<!--注释掉即可消除页面小房子-->
+<script src="js/content.js?v=1.0.0" th:src="@{~/js/content.js}"></script>
 
 
 <!-- Flot -->
-<script src="js/plugins/flot/jquery.flot.js"></script>
-<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="js/plugins/flot/jquery.flot.resize.js"></script>
+<script src="js/plugins/flot/jquery.flot.js"
+        th:src="@{~/js/plugins/flot/jquery.flot.js}"></script>
+<script src="js/plugins/flot/jquery.flot.tooltip.min.js"
+        th:src="@{~/js/plugins/flot/jquery.flot.tooltip.min.js}"></script>
+<script src="js/plugins/flot/jquery.flot.resize.js"
+        th:src="@{~/js/plugins/flot/jquery.flot.resize.js}"></script>
+
 
 <!-- ChartJS-->
-<script src="js/plugins/chartJs/Chart.min.js"></script>
+<script src="js/plugins/chartJs/Chart.min.js"
+        th:src="@{~/js/plugins/chartJs/Chart.min.js}"></script>
 
 <!-- Peity -->
-<script src="js/plugins/peity/jquery.peity.min.js"></script>
+<script src="js/plugins/peity/jquery.peity.min.js"
+        th:src="@{~/js/plugins/peity/jquery.peity.min.js}"></script>
 
 <!-- Peity demo -->
-<script src="js/demo/peity-demo.js"></script>
+<script src="js/demo/peity-demo.js"
+        th:src="@{~/js/demo/peity-demo.js}"></script>
 <script>
     function allCategory() {
-        a = 0;
         $.ajax({
             type: "GET",
             url: "http://localhost:8080/category",
@@ -168,9 +182,7 @@
             dataType: "json",
             success: function (data) {
                 $.each(data, function (index, categories) {
-                    if (a == 0) {
-                        $("#categoryItem").append("<li><a href='#'>" + categories.categoryName + "</a></li>");
-                    }
+                    $("#categoryItem").append("<li><a>" + categories.categoryName + "</a></li>");
                     return;
                 });
             },

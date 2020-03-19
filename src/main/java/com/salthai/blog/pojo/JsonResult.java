@@ -30,25 +30,25 @@ public class JsonResult<T> {
     }
 
     /**
-     * 有数据返回时，状态码为 0，默认提示信息为“操作成功！”
+     * 有数据返回时，状态码为 1，默认提示信息为“操作成功！”
      *
      * @param data
      */
     public JsonResult(T data) {
         this.data = data;
-        this.code = "0";
+        this.code = "1";
         this.msg = "操作成功！";
     }
 
     /**
-     * 有数据返回，状态码为 0，人为指定提示信息
+     * 有数据返回，状态码为 2，人为指定提示信息
      *
      * @param data
      * @param msg
      */
     public JsonResult(T data, String msg) {
         this.data = data;
-        this.code = "0";
+        this.code = "2";
         this.msg = msg;
     }
 

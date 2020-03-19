@@ -81,11 +81,16 @@ public class ArticleController {
         PageHelper.startPage(start, size);
         int articleBelong = categoryId;
         List<Article> articleList = articleService.getArticleBelongList(articleBelong);
-        PageInfo<Article> articleBelongList = new PageInfo<>(articleList);
-        modelMap.addAttribute("articleBelongList", articleBelongList);
-        modelMap.addAttribute("articleBelong", articleBelong);
-        System.out.println("------/category/{articleBelong} success------");
-        return "articleList";
+        if (articleList != null && !articleList.isEmpty()) {
+            PageInfo<Article> articleBelongList = new PageInfo<>(articleList);
+            modelMap.addAttribute("articleBelongList", articleBelongList);
+            modelMap.addAttribute("categoryId", categoryId);
+            System.out.println("------有数据成功执行------");
+            return "articleList";
+        } else {
+            System.out.println("------无数据成功执行------");
+            return "notArticle";
+        }
     }
 
     @RequestMapping("/article/allArticle")
@@ -96,8 +101,8 @@ public class ArticleController {
         PageHelper.startPage(start, size);
         List<Article> articleList = articleService.getAllArticle();
         PageInfo<Article> allArticleList = new PageInfo<>(articleList);
-        modelMap.addAttribute("articleBelongList", allArticleList);
+        modelMap.addAttribute("allArticleList", allArticleList);
         System.out.println("------/article/allArticle success------");
-        return "articleList";
+        return "articleListAll";
     }
 }

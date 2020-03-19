@@ -18,10 +18,10 @@ public class AdminMapperTest {
     @Autowired
     AdminMapper adminMapper;
 
-
+    @Test
     public void findAllAdmin() {
-        List<Admin> admins = adminMapper.findAllAdmin();
-        System.out.println(admins);
+        Admin admin = adminMapper.findAllAdmin();
+        System.out.println(admin);
     }
 
 
@@ -59,10 +59,11 @@ public class AdminMapperTest {
     @Test
     public void updateAdminInfo() {
         Admin admin = new Admin();
-        admin.setUsername("tom");
-        admin.setAdminAddress("赣州");
-        admin.setAdminAbout("不会代码");
-        admin.setAdminId(4);
+        admin.setUsername("lili");
+        admin.setAdminAddress("上海");
+        admin.setAdminAbout("aaaa");
+        admin.setNickName("阿海");
+        admin.setAdminId(2);
         adminMapper.updateAdminInfo(admin);
         System.out.println("success");
     }

@@ -5,10 +5,8 @@ import com.salthai.blog.pojo.JsonResult;
 import com.salthai.blog.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -24,7 +22,7 @@ public class CategoryController {
 
 
     /**
-     * 有问题
+     * SpringBoot默认传输Json
      *
      * @param
      * @return
@@ -34,7 +32,18 @@ public class CategoryController {
     public List<Category> getAllCategory() {
         List<Category> categoryList = categoryService.findAllCategory();
         System.out.println("启动成功/category");
-//        return new JsonResult<>(categoryList, "success");
         return categoryList;
+    }
+
+    /**
+     * 阿里FastJson传输
+     *
+     * @return
+     */
+    @ResponseBody
+    @GetMapping("/category/getFastJsonCategory")
+    public JsonResult<List> getFastJsonCategory() {
+        List<Category> categoryList = categoryService.findAllCategory();
+        return new JsonResult<>(categoryList, "success");
     }
 }

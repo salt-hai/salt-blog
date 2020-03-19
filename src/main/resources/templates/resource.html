@@ -1,172 +1,183 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>资源下载</title>
-		<link rel="shortcut icon" href="favicon.ico">
-		<link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-		<link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
-		<link href="css/animate.css" rel="stylesheet">
-		<link href="css/style.css?v=4.1.0" rel="stylesheet">
-	</head>
-	<body class="gray-bg top-navigation">
-		<div id="wrapper">
-			<div id="page-wrapper" class="gray-bg">
-				<div class="row border-bottom white-bg">
-					<nav class="navbar navbar-static-top" role="navigation">
-						<div class="navbar-header">
-							<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed"
-							 type="button">
-								<i class="fa fa-reorder"></i>
-							</button>
-							<a href="#" class="navbar-brand">Hplus</a>
-						</div>
-						<div class="navbar-collapse collapse" id="navbar">
-							<ul class="nav navbar-nav">
-								<li class="active">
-									<a aria-expanded="false" role="button" href="index.html"> 返回首页</a>
-								</li>
-								<li class="dropdown">
-									<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> 文章分类 <span
-										 class="caret"></span></a>
-									<ul role="menu" class="dropdown-menu">
-										<!-- 分类列表 -->
-										<li><a href="articleList.html">全部</a>
-										</li>
-										<li><a href="articleList.html">技术</a>
-										</li>
-										<li><a href="articleList.html">生活</a>
-										</li>
-									</ul>
-								</li>
-								<li class="dropdown">
-									<a aria-expanded="false" role="button" href="#">资源下载</a>
-								</li>
-								<li class="dropdown">
-									<a aria-expanded="false" role="button" href="about.html">关于</a>
-								</li>
-							</ul>
-							<ul class="nav navbar-top-links navbar-right">
-								<li>
-									<a href="login.html">
-										<i class="fa fa-check"></i>管理员
-									</a>
-								</li>
-							</ul>
-						</div>
-					</nav>
-				</div>
-				<!-- 下载列表 -->
-				<div class="wrapper wrapper-content animated fadeInRight">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="ibox float-e-margins">
-								<div class="ibox-title">
-									<h5>文章管理</h5>
-									<div class="ibox-tools">
-										<a class="collapse-link">
-											<i class="fa fa-chevron-up"></i>
-										</a>
-										<a class="close-link">
-											<i class="fa fa-times"></i>
-										</a>
-									</div>
-								</div>
-								<div class="ibox-content">
-									<div class="row">
-										<div class="col-sm-6">
-											<div class="input-group">
-												<input type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
-													<button type="button" class="btn btn-sm btn-primary"> 搜索</button> </span>
-											</div>
-										</div>
-									</div>
-									<div class="table-responsive">
-										<table class="table table-striped">
-											<thead>
-												<tr>
-													<th></th>
-													<th id="resourceName">资源名称</th>
-													<th id="resourceTime">时间</th>
-													<th id="resourceDownload">下载</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>
-														<input type="checkbox" name="input[]">
-													</td>
-													<td>Java疯狂讲义</td>
-													<td>2020-02-13 20:05:51</td>
-													<td><a>下载</a>
-													</td>
-												</tr>
-												<tr>
-													<td>
-														<input type="checkbox" name="input[]">
-													</td>
-													<td>Java疯狂讲义</td>
-													<td>2020-02-13 20:05:51</td>
-													<td><a>下载</a>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>资源下载</title>
+	<link rel="shortcut icon" href="favicon.ico" th:href="@{~/favicon.ico}"/>
+	<link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
+	<link href="css/font-awesome.css?v=4.4.0" rel="stylesheet" th:href="@{~/css/font-awesome.css}"/>
+	<link href="css/animate.css" rel="stylesheet" th:href="@{~/css/animate.css}"/>
+	<link href="css/style.css?v=4.1.0" rel="stylesheet" th:href="@{~/css/style.css}"/>
+</head>
+<body class="gray-bg top-navigation">
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom white-bg">
+            <nav class="navbar navbar-static-top" role="navigation">
+                <div class="navbar-header">
+                    <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
+                            class="navbar-toggle collapsed"
+                            type="button">
+                        <i class="fa fa-reorder"></i>
+                    </button>
+                    <a href="#" class="navbar-brand">Hplus</a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a aria-expanded="false" role="button" href="index.html"> 返回首页</a>
+                        </li>
+                        <li class="dropdown">
+                            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle"
+                               data-toggle="dropdown"> 文章分类 <span
+                                    class="caret"></span></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <!-- 分类列表 -->
+                                <li><a href="articleList.html">全部</a>
+                                </li>
+                                <li><a href="articleList.html">技术</a>
+                                </li>
+                                <li><a href="articleList.html">生活</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a aria-expanded="false" role="button" href="#">资源下载</a>
+                        </li>
+                        <li class="dropdown">
+                            <a aria-expanded="false" role="button" href="about.html">关于</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <a href="login.html">
+                                <i class="fa fa-check"></i>管理员
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- 下载列表 -->
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>文章管理</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <input type="text" placeholder="请输入关键词" class="input-sm form-control"> <span
+                                            class="input-group-btn">
+													<button type="button"
+                                                            class="btn btn-sm btn-primary"> 搜索</button> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th id="resourceName">资源名称</th>
+                                        <th id="resourceTime">时间</th>
+                                        <th id="resourceDownload">下载</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="input[]">
+                                        </td>
+                                        <td>Java疯狂讲义</td>
+                                        <td>2020-02-13 20:05:51</td>
+                                        <td><a>下载</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="input[]">
+                                        </td>
+                                        <td>Java疯狂讲义</td>
+                                        <td>2020-02-13 20:05:51</td>
+                                        <td><a>下载</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
-								</div>
-							</div>
-						</div>
+                        </div>
+                    </div>
+                </div>
 
-					</div>
-					<div align="center">
-						<div class="btn-group">
-							<button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i>
-							</button>
-							<button class="btn btn-white  active">1</button>
-							<button class="btn btn-white">2</button>
-							<button class="btn btn-white">3</button>
-							<button class="btn btn-white">4</button>
-							<button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-				<!-- 页脚 -->
-				<div class="footer navbar-fixed-bottom">
-					<div class="pull-right">
-						By：<a href="http://www.salthai.top/" target="_blank">salthai's blog</a>
-					</div>
+            </div>
+            <div align="center">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-white  active">1</button>
+                    <button class="btn btn-white">2</button>
+                    <button class="btn btn-white">3</button>
+                    <button class="btn btn-white">4</button>
+                    <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 页脚 -->
+        <div class="footer navbar-fixed-bottom">
+            <div class="pull-right">
+                By：<a href="http://www.salthai.top/" target="_blank">salthai's blog</a>
+            </div>
 
-					<div>
-						<strong>Copyright</strong> H+ &copy; 2014
-					</div>
+            <div>
+                <strong>Copyright</strong> H+ &copy; 2020
+            </div>
 
-				</div>
+        </div>
 
-				<!-- 全局js -->
-				<script src="js/jquery.min.js?v=2.1.4"></script>
-				<script src="js/bootstrap.min.js?v=3.3.6"></script>
-
-
-
-				<!-- 自定义js -->
-				<script src="js/content.js?v=1.0.0"></script>
+        <!-- 全局js -->
+        <script src="js/jquery.min.js?v=2.1.4" th:src="@{~/js/jquery.min.js}"></script>
+        <script src="js/bootstrap.min.js?v=3.3.6" th:src="@{~/js/bootstrap.min.js}"></script>
 
 
-				<!-- Flot -->
-				<script src="js/plugins/flot/jquery.flot.js"></script>
-				<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-				<script src="js/plugins/flot/jquery.flot.resize.js"></script>
+        <!-- 自定义js -->
+        <script src="js/content.js?v=1.0.0" th:src="@{~/js/content.js}"></script>
 
-				<!-- ChartJS-->
-				<script src="js/plugins/chartJs/Chart.min.js"></script>
 
-				<!-- Peity -->
-				<script src="js/plugins/peity/jquery.peity.min.js"></script>
+        <!-- Flot -->
+        <script src="js/plugins/flot/jquery.flot.js"
+                th:src="@{~/js/plugins/flot/jquery.flot.js}"></script>
+        <script src="js/plugins/flot/jquery.flot.tooltip.min.js"
+                th:src="@{~/js/plugins/flot/jquery.flot.tooltip.min.js}"></script>
+        <script src="js/plugins/flot/jquery.flot.resize.js"
+                th:src="@{~/js/plugins/flot/jquery.flot.resize.js}"></script>
 
-				<!-- Peity demo -->
-				<script src="js/demo/peity-demo.js"></script>
-	</body>
-	</body>
+        <!-- ChartJS-->
+        <script src="js/plugins/chartJs/Chart.min.js"
+                th:src="@{~/js/plugins/chartJs/Chart.min.js}"></script>
+
+        <!-- Peity -->
+        <script src="js/plugins/peity/jquery.peity.min.js"
+                th:src="@{~/js/plugins/peity/jquery.peity.min.js}"></script>
+
+        <!-- Peity demo -->
+        <script src="js/demo/peity-demo.js"
+                th:src="@{~/js/demo/peity-demo.js}"></script>
+
+
+</body>
+</body>
 </html>
