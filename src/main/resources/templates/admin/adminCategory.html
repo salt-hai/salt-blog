@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分类管理</title>
+    <link rel="icon" href="../static/favicon.ico" th:href="@{~/static/favicon.ico}"/>
+    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
+    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet" th:href="@{~/css/font-awesome.css}"/>
+    <link href="css/animate.css" rel="stylesheet" th:href="@{~/css/animate.css}"/>
+    <link href="css/style.css?v=4.1.0" rel="stylesheet" th:href="@{~/css/style.css}"/>
+    <!-- Sweet Alert -->
+    <link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet"
+          th:href="@{~/css/plugins/sweetalert/sweetalert.css}"/>
+
+</head>
+<body class="gray-bg top-navigation">
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom white-bg">
+            <nav class="navbar navbar-static-top" role="navigation">
+                <div class="navbar-header">
+                    <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
+                            class="navbar-toggle collapsed"
+                            type="button">
+                        <i class="fa fa-reorder"></i>
+                    </button>
+                    <a href="#" class="navbar-brand">管理员</a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a aria-expanded="false" role="button" href="adminIndex.html"> 控制台</a>
+                        </li>
+                        <li class="dropdown">
+                            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle"
+                               data-toggle="dropdown"> 管理 <span class="caret"></span></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <!-- 分类列表 -->
+                                <li><a href="articleAdmin.html">文章管理</a>
+                                </li>
+                                <li class="active"><a href="">分类管理</a>
+                                </li>
+                                <li><a href="#">管理员信息管理</a>
+                                </li>
+                                <li><a href="#">友情链接管理</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a aria-expanded="false" role="button" href="articleEditor.html">写作</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a aria-expanded="false" role="button" href="#">资源管理</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <a href="adminIndex.html">
+                                <i class="fa fa-sign-out"></i> 退出
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- 分类管理表格 -->
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>分类管理</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <input type="text" placeholder="请输入关键词" class="input-sm form-control"> <span
+                                            class="input-group-btn">
+													<button type="button"
+                                                            class="btn btn-sm btn-primary"> 搜索</button> </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#myModal">添加分类
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- 模态窗口 -->
+                            <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content animated bounceInRight">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">&times;</span><span
+                                                    class="sr-only">关闭</span>
+                                            </button>
+                                            <i class="fa fa-laptop modal-icon"></i>
+                                            <h4 class="modal-title">添加分类</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group"><label>分类名称</label> <input type="email"
+                                                                                               placeholder="请输入分类名称"
+                                                                                               class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                            <button type="button" class="btn btn-primary">保存</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 管理表格 -->
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+
+                                        <th></th>
+                                        <th id="categoryId">categoryId</th>
+                                        <th id="categoryName">分类名称</th>
+                                        <th id="categoryTime">创建日期</th>
+                                        <th id="categoryEdit">编辑</th>
+                                        <th id="categoryDelete">删除</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="input[]">
+                                        </td>
+                                        <td>1</td>
+                                        <td>技术</td>
+                                        <td>2020-02-12 19:37</td>
+                                        <td><a href="articleUpdate.html">编辑</a>
+                                        <td>
+                                            <button class="btn btn-warning btn-sm deleteArticle">删除</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="input[]">
+                                        </td>
+                                        <td>2</td>
+                                        <td>生活</td>
+                                        <td>2020-02-13 20:05:51</td>
+                                        <td><a href="table_basic.html#">编辑</a>
+                                        <td>
+                                            <button class="btn btn-warning btn-sm deleteArticle">删除</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div align="center">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-white  active">1</button>
+                    <button class="btn btn-white">2</button>
+
+
+                    <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer navbar-fixed-bottom">
+            <div class="pull-right">
+                By：<a href="http://www.salthai.top/" target="_blank">salthai's blog</a>
+            </div>
+
+            <div>
+                <strong>Copyright</strong> H+ &copy; 2020
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- 全局js -->
+<script src="js/jquery.min.js?v=2.1.4" th:src="@{~/js/jquery.min.js}"></script>
+<script src="js/bootstrap.min.js?v=3.3.6" th:src="@{~/js/bootstrap.min.js}"></script>
+<!-- 自定义js -->
+<!--注释掉即可消除页面小房子-->
+<script src="js/content.js?v=1.0.0" th:src="@{~/js/content.js}"></script>
+<!-- ChartJS-->
+<script src="js/plugins/chartJs/Chart.min.js"
+        th:src="@{~/js/plugins/chartJs/Chart.min.js}"></script>
+
+<!-- Peity -->
+<script src="js/plugins/peity/jquery.peity.min.js"
+        th:src="@{~/js/plugins/peity/jquery.peity.min.js}"></script>
+
+<!-- Sweet alert -->
+<script src="js/plugins/sweetalert/sweetalert.min.js"
+        th:src="@{~/js/plugins/sweetalert/sweetalert.min.js}"></script>
+<!-- js函数 -->
+<script>
+    $('.deleteArticle').click(function () {
+        swal({
+            title: "您确定要删除此分类吗？",
+            text: "删除该分类其下文章也全部删除，请谨慎操作！",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "删除",
+            closeOnConfirm: false
+        }, function () {
+            // 添加Ajax操作
+            swal("删除成功！", "您已经永久删除了此分类。", "success");
+        });
+    });
+</script>
+</body>
+</body>
+</html>
