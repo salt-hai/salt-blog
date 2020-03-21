@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 /** @Author: salthai @Date: 2020/3/20 20:00 @Version 1.0 */
 @Controller
+@RequestMapping("/admin")
 public class LoginController {
   @Autowired AdminService adminService;
   AdminAboutService adminAboutService;
@@ -38,7 +39,7 @@ public class LoginController {
    * @return
    * @throws Exception
    */
-  @PostMapping("/admin/login")
+  @PostMapping("/login")
   public String login(
       @RequestParam("username") String username,
       @RequestParam("password") String password,

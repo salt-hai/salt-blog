@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /** @Author: salthai @Date: 2020/3/14 22:52 @Version 1.0 */
@@ -30,6 +31,7 @@ public class ArticleController {
   @RequestMapping("/")
   public String index(
       ModelMap modelMap,
+      HttpSession httpSession,
       @RequestParam(value = "start", defaultValue = "0") int start,
       @RequestParam(value = "size", defaultValue = "6") int size)
       throws Exception {
@@ -40,7 +42,6 @@ public class ArticleController {
     System.out.println("------/success------");
     return "index";
   }
-
   /**
    * 详情页
    *

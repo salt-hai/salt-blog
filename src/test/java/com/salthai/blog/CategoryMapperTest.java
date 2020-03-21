@@ -21,14 +21,14 @@ public class CategoryMapperTest {
     @Autowired
     CategoryMapper categoryMapper;
 
-    @Test
+
     public void findAllCategory() {
         List<Category> categoryList = categoryMapper.findAllCategory();
 
         System.out.println(categoryList);
     }
 
-    @Test
+
     public void findByCategoryId() {
         Category category = categoryMapper.findByCategoryId(1);
         System.out.println(category);
@@ -37,7 +37,7 @@ public class CategoryMapperTest {
     /**
      * 两表链接查询:未成功。
      */
-    @Test
+
     public void findCategoryArticle() {
         Category category = categoryMapper.findCategoryArticle(1);
         System.out.println(category);
@@ -46,7 +46,7 @@ public class CategoryMapperTest {
         System.out.println(articleList);
     }
 
-    @Test
+
     public void addCategory() {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -58,7 +58,7 @@ public class CategoryMapperTest {
         System.out.println("success");
     }
 
-    @Test
+
     public void updateCategory() {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -71,7 +71,7 @@ public class CategoryMapperTest {
         System.out.println("success");
     }
 
-    @Test
+
     public void deleteByCategoryId() {
         categoryMapper.deleteByCategoryId(3);
         System.out.println("删除成功");

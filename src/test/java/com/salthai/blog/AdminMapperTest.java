@@ -13,7 +13,6 @@ import java.util.List;
 public class AdminMapperTest {
   @Autowired AdminMapper adminMapper;
 
-  @Test
   public void findAllAdmin() {
     Admin admin = adminMapper.findAllAdmin();
     System.out.println(admin);
@@ -47,7 +46,6 @@ public class AdminMapperTest {
     System.out.println("success");
   }
 
-  @Test
   public void updateAdminInfo() {
     Admin admin = new Admin();
     admin.setUsername("lili");
@@ -59,7 +57,6 @@ public class AdminMapperTest {
     System.out.println("success");
   }
 
-  @Test
   public void findAdmin() {
     Admin admin = new Admin();
     admin.setUsername("tom");

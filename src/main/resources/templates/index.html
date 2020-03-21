@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>blog</title>
-    <link rel="icon" href="../static/favicon.ico" th:href="@{~/static/favicon.ico}"/>
     <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
     <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet" th:href="@{~/css/font-awesome.css}"/>
     <link href="css/animate.css" rel="stylesheet" th:href="@{~/css/animate.css}"/>
@@ -55,7 +54,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <a th:href="@{/login}">
+                            <a th:href="@{/admin/login}">
                                 <i class="fa fa-check"></i>管理员
                             </a>
                         </li>
@@ -63,7 +62,6 @@
                 </div>
             </nav>
         </div>
-
         <div class="wrapper wrapper-content  animated fadeInRight blog">
             <div class="row">
                 <tr th:each="article:${pageInfo.list}">
