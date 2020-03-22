@@ -16,7 +16,7 @@ public class PageConfig {
     /**
      * 分页配置类
      *
-     * @return
+     * @return PageHelper
      */
     @Bean
     public PageHelper pageHelper() {

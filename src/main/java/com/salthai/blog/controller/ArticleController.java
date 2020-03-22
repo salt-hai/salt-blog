@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/** @Author: salthai @Date: 2020/3/14 22:52 @Version 1.0 */
+/**
+ * @Author: salthai
+ * @Date: 2020/3/14 22:52
+ * @Version 1.0
+ */
 @Controller
 public class ArticleController {
   @Autowired ArticleService articleService;
@@ -23,9 +27,9 @@ public class ArticleController {
    * index
    *
    * @param modelMap
-   * @param start 从0开始
-   * @param size 每页6条
-   * @return
+   * @param start    从0开始
+   * @param size     每页6条
+   * @return String
    * @throws Exception
    */
   @RequestMapping("/")
@@ -42,12 +46,13 @@ public class ArticleController {
     System.out.println("------/success------");
     return "index";
   }
+
   /**
    * 详情页
    *
    * @param modelMap
    * @param articleId
-   * @return
+   * @return article
    * @throws Exception
    */
   @RequestMapping("/article/getArticle/{articleId}")
@@ -65,7 +70,7 @@ public class ArticleController {
    * @param modelMap
    * @param start 从0开始
    * @param size 每页6条
-   * @return
+   * @return String
    * @throws Exception
    */
   @RequestMapping("/article/getArticleBelong/{categoryId}")
@@ -91,12 +96,21 @@ public class ArticleController {
     }
   }
 
+  /**
+   * 查看全部文章
+   *
+   * @param modelMap
+   * @param start
+   * @param size
+   * @return String
+   * @throws Exception
+   */
   @RequestMapping("/article/allArticle")
   public String allArticleList(
-      ModelMap modelMap,
-      @RequestParam(value = "start", defaultValue = "0") int start,
-      @RequestParam(value = "size", defaultValue = "6") int size)
-      throws Exception {
+          ModelMap modelMap,
+          @RequestParam(value = "start", defaultValue = "0") int start,
+          @RequestParam(value = "size", defaultValue = "6") int size)
+          throws Exception {
     PageHelper.startPage(start, size);
     List<Article> articleList = articleService.getAllArticle();
     PageInfo<Article> allArticleList = new PageInfo<>(articleList);

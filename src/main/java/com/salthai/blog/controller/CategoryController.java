@@ -25,7 +25,7 @@ public class CategoryController {
      * SpringBoot默认传输Json
      *
      * @param
-     * @return
+     * @return categoryList
      */
     @ResponseBody
     @GetMapping("/category")
@@ -38,7 +38,7 @@ public class CategoryController {
     /**
      * 阿里FastJson传输
      *
-     * @return
+     * @return JsonResult
      */
     @ResponseBody
     @GetMapping("/category/getFastJsonCategory")

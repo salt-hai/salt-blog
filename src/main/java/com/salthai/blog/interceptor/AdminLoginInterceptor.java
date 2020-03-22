@@ -7,7 +7,13 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** 后台系统身份验证拦截器 @Author: salthai @Date: 2020/3/20 20:00 @Version 1.0 */
+/**
+ * 后台系统身份验证拦截器
+ *
+ * @Author: salthai
+ * @Date: 2020/3/20 20:00
+ * @Version 1.0
+ */
 @Component
 public class AdminLoginInterceptor implements HandlerInterceptor {
 

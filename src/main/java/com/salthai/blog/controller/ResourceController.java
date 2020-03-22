@@ -23,7 +23,7 @@ public class ResourceController {
     ResourceService resourceService;
 
     /**
-     * 资源页
+     * 查看资源
      *
      * @param modelMap
      * @param start

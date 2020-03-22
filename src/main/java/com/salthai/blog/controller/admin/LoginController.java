@@ -29,7 +29,7 @@ public class LoginController {
   /**
    * 管理员入口
    *
-   * @return
+   * @return String
    */
   @RequestMapping({"/login"})
   public String admin() {
@@ -39,10 +39,10 @@ public class LoginController {
   /**
    * 使用MD5简简单单枯燥登录
    *
-   * @param username
-   * @param password
+   * @param username 管理员用户名
+   * @param password 管理员密码
    * @param session
-   * @return
+   * @return String
    * @throws Exception
    */
   @PostMapping("/login")

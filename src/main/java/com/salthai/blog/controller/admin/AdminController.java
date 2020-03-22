@@ -52,7 +52,7 @@ public class AdminController {
      * @param password1
      * @param password2
      * @param request
-     * @return
+     * @return String
      * @throws Exception
      */
     @PostMapping("/updateAdminPassword")
