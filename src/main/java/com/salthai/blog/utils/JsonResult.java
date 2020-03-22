@@ -1,12 +1,20 @@
 package com.salthai.blog.utils;
 
-/** @Author: salthai @Date: 2020/3/17 12:52 @Version 1.0 */
+/**
+ * Json工具类，可自定义返回信息
+ *
+ * @Author: salthai
+ * @Date: 2020/3/17 12:52
+ * @Version 1.0
+ */
 public class JsonResult<T> {
   private T data;
   private String code;
   private String msg;
 
-  /** 若没有数据返回，默认状态码为 0，提示信息为“操作成功！” */
+  /**
+   * 若没有数据返回，默认状态码为 0，提示信息为“操作失败”
+   */
   public JsonResult() {
     this.code = "0";
     this.msg = "操作成功！";
@@ -35,14 +43,14 @@ public class JsonResult<T> {
   }
 
   /**
-   * 有数据返回，状态码为 2，人为指定提示信息
+   * 有数据返回，状态码为 1，人为指定提示信息
    *
    * @param data
    * @param msg
    */
   public JsonResult(T data, String msg) {
     this.data = data;
-    this.code = "2";
+    this.code = "1";
     this.msg = msg;
   }
 

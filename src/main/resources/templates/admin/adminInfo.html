@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理员信息更新</title>
-    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
+    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet" th:href="@{~/css/font-awesome.css}"/>
+    <link href="css/animate.css" rel="stylesheet" th:href="@{~/css/animate.css}"/>
+    <link href="css/style.css?v=4.1.0" rel="stylesheet" th:href="@{~/css/style.css}"/>
+    <link href="css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet"
+          th:href="@{~/css/plugins/bootstrap-table/bootstrap-table.min.css}"/>
     <!-- Sweet Alert -->
-    <link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet"
+          th:href="@{~/css/plugins/sweetalert/sweetalert.css}">
 
 </head>
 <body class="gray-bg top-navigation">
@@ -56,7 +58,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <a href="adminIndex.html">
+                            <a th:href="@{/admin/logout}">
                                 <i class="fa fa-sign-out"></i> 退出
                             </a>
                         </li>
@@ -68,69 +70,66 @@
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>修改用户信息</h5>
+                        <h5>修改管理员信息和管理员密码</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
                             </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-
                             <a class="close-link">
                                 <i class="fa fa-times"></i>
                             </a>
                         </div>
                     </div>
-                    <div class="ibox-content">
-                        <form method="get" class="form-horizontal">
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">用户名</label>
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="username">
+                    <div class="ibox-content col-sm-12">
+                        <div class="alert alert-danger col-sm-12">注意!!修改成功管理员密码,需要重新登录。</div>
+                        <div class="alert alert-danger" th:text="${session.errorMsg}"></div>
+                        <form method="post" class="form-horizontal" th:action="@{/admin/updateAdminPassword}">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">输入密码：</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" name="password1" id="password1"
+                                               placeholder="请输入密码">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">确认密码：</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" name="password2" id="password2"
+                                               placeholder="确认密码">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <button class="btn btn-primary" type="submit">更新密码</button>
+                        </form>
+                    </div>
+                    <div class="ibox-content col-sm-12">
+                        <form method="post" class="form-horizontal" action="#">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">昵称：</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="nickName" id="nickName" class="form-control"
+                                               placeholder="请输入昵称">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">地址：</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="adminAddress" id="adminAddress" class="form-control"
+                                               placeholder="请输入文本"> <span class="help-block m-b-none">输入您的地址</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">关于：</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="adminAbout" id="adminAbout" class="form-control"
+                                               placeholder="请输入文本"> <span class="help-block m-b-none">输入介绍自己的信息</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">密码</label>
-
-                                <div class="col-sm-5">
-                                    <input type="password" class="form-control" name="password1">
-                                </div>
-                            </div>
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">再次输入密码</label>
-
-                                <div class="col-sm-5">
-                                    <input type="password" class="form-control" name="password2">
-                                </div>
-                            </div>
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">关于管理员</label>
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="adminAbout"> <span
-                                        class="help-block m-b-none"></span>
-                                </div>
-                            </div>
-
-
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">地址</label>
-
-                                <div class="col-sm-5">
-                                    <input type="text" placeholder="输入地址" class="form-control" name="adminAddress">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-4 col-sm-offset-2">
-                                    <button class="btn btn-primary" type="submit">保存内容</button>
-                                    <button class="btn btn-white" type="submit">取消</button>
-                                </div>
-                            </div>
+                            <button class="btn btn-primary" type="submit">更新信息</button>
                         </form>
                     </div>
                 </div>
@@ -145,26 +144,17 @@
             <div>
                 <strong>Copyright</strong> H+ &copy; 2020
             </div>
-
         </div>
     </div>
 </div>
-
 <!-- 全局js -->
-<script src="js/jquery.min.js?v=2.1.4"></script>
-<script src="js/bootstrap.min.js?v=3.3.6"></script>
-
-<!-- 自定义js -->
-<script src="js/content.js?v=1.0.0"></script>
-
+<script src="js/jquery.min.js?v=2.1.4" th:src="@{~/js/jquery.min.js}"></script>
+<script src="js/bootstrap.min.js?v=3.3.6" th:src="@{~/js/bootstrap.min.js}"></script>
 <!-- Sweet alert -->
-<script src="js/plugins/sweetalert/sweetalert.min.js"></script>
-<!-- Bootstrap table -->
-<script src="js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
-<script src="js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
-<script src="js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="js/plugins/sweetalert/sweetalert.min.js" th:src="@{~/js/plugins/sweetalert/sweetalert.min.js}"></script>
 
 <!-- Peity -->
-<script src="js/demo/bootstrap-table-demo.js"></script>
+<script src="js/plugins/peity/jquery.peity.min.js"
+        th:src="@{~/js/plugins/peity/jquery.peity.min.js}"></script>
 </body>
 </html>

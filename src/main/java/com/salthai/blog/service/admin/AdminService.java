@@ -33,4 +33,24 @@ public class AdminService {
     Admin admin = adminMapper.findAllAdmin();
     return admin;
   }
+
+  /**
+   * 更新管理员密码
+   *
+   * @param admin
+   * @return boolean
+   */
+  public boolean updateAdminPassword(Admin admin) {
+    return adminMapper.updateAdminPassword(admin);
+  }
+
+  /**
+   * 更新管理员信息
+   *
+   * @param admin
+   * @return boolean
+   */
+  public boolean updateAdminInfo(Admin admin) {
+    return adminMapper.updateAdminInfo(admin);
+  }
 }

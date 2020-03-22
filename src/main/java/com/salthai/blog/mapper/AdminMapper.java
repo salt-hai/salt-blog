@@ -64,7 +64,7 @@ public interface AdminMapper {
    * @return int
    */
   @Update("update admin set password=#{password} where adminId=#{adminId} ")
-  public int updateAdminPassword(Admin admin);
+  public boolean updateAdminPassword(Admin admin);
 
   /**
    * 更新管理员信息
@@ -74,5 +74,5 @@ public interface AdminMapper {
    */
   @Update(
       "update admin set username=#{username},nickName=#{nickName},adminAddress=#{adminAddress},adminAbout=#{adminAbout} where adminId=#{adminId}")
-  public int updateAdminInfo(Admin admin);
+  public boolean updateAdminInfo(Admin admin);
 }

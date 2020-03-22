@@ -30,7 +30,7 @@
                 <div class="navbar-collapse collapse" id="navbar">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a aria-expanded="false" role="button" href="#"> 控制台</a>
+                            <a aria-expanded="false" role="button" th:href="@{/admin/adminIndex}"> 控制台</a>
                         </li>
                         <li class="dropdown">
                             <a aria-expanded="false" role="button" href="#" class="dropdown-toggle"
@@ -41,7 +41,7 @@
                                 </li>
                                 <li><a href="adminCategory.html">分类管理</a>
                                 </li>
-                                <li><a href="adminInfo.html">管理员信息管理</a>
+                                <li><a th:href="@{/admin/adminInfo}">管理员信息管理</a>
                                 </li>
                                 <li><a href="adminLinks.html">友情链接管理</a>
                                 </li>
@@ -57,7 +57,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <a href="adminIndex.html">
+                            <a th:href="@{/admin/logout}">
                                 <i class="fa fa-sign-out"></i> 退出
                             </a>
                         </li>
@@ -168,12 +168,6 @@
 <!-- 全局js -->
 <script src="js/jquery.min.js?v=2.1.4" th:src="@{~/js/jquery.min.js}"></script>
 <script src="js/bootstrap.min.js?v=3.3.6" th:src="@{~/js/bootstrap.min.js}"></script>
-
-
-<!-- 自定义js -->
-<!--注释掉即可消除页面小房子-->
-<!--<script src="js/content.js?v=1.0.0" th:src="@{~/js/content.js}"></script>-->
-
 
 <!-- Flot -->
 <script src="js/plugins/flot/jquery.flot.js"

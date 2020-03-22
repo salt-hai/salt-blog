@@ -16,8 +16,8 @@ public class TextViewConfig implements WebMvcConfigurer {
    */
   @Override
   public void addViewControllers(ViewControllerRegistry registry) {
-    registry.addViewController("/admin/adminCategory").setViewName("/admin/adminCategory");
-    registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
-    WebMvcConfigurer.super.addViewControllers(registry);
+//    registry.addViewController("/admin/adminInfo").setViewName("/admin/adminInfo");
+//    registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+//    WebMvcConfigurer.super.addViewControllers(registry);
   }
 }

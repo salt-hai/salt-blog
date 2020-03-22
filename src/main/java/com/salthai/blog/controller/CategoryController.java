@@ -1,8 +1,8 @@
 package com.salthai.blog.controller;
 
 import com.salthai.blog.pojo.Category;
-import com.salthai.blog.utils.JsonResult;
 import com.salthai.blog.service.CategoryService;
+import com.salthai.blog.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
