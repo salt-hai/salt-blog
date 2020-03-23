@@ -92,4 +92,9 @@ public class AdminController {
         request.getSession().setAttribute("errorMsg", "请输入密码");
         return "admin/adminInfo";
     }
+
+    @PostMapping("/updateAdminInfo")
+    public String updateAdminInfo() {
+        return "admin/adminIndex";
+    }
 }
