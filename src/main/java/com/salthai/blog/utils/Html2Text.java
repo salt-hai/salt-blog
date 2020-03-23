@@ -1,8 +1,12 @@
 package com.salthai.blog.utils;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.parser.ParserDelegator;
-import java.io.*;
 
 /**
  * Html转文本
@@ -18,6 +22,16 @@ public class Html2Text extends HTMLEditorKit.ParserCallback {
     StringBuffer s;
 
     public Html2Text() {
+    }
+
+    public static String getContent(String str) {
+        try {
+            html2Text.parse(str);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return html2Text.getText();
     }
 
     public void parse(String str) throws IOException {
@@ -39,15 +53,5 @@ public class Html2Text extends HTMLEditorKit.ParserCallback {
 
     public String getText() {
         return s.toString();
-    }
-
-    public static String getContent(String str) {
-        try {
-            html2Text.parse(str);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return html2Text.getText();
     }
 }

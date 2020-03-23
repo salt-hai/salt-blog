@@ -19,15 +19,19 @@ import java.util.List;
  */
 @Controller
 public class ResourceController {
+    private ResourceService resourceService;
+
     @Autowired
-    ResourceService resourceService;
+    public void setResourceService(ResourceService resourceService) {
+        this.resourceService = resourceService;
+    }
 
     /**
      * 查看资源
      *
-     * @param modelMap
-     * @param start
-     * @param size
+     * @param modelMap 视图对象
+     * @param start    分页开始页数
+     * @param size     每页数量
      * @return String
      * @throws Exception
      */

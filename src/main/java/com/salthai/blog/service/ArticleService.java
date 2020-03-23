@@ -4,13 +4,16 @@ import com.salthai.blog.mapper.ArticleMapper;
 import com.salthai.blog.pojo.Article;
 import com.salthai.blog.utils.Html2Text;
 import com.youbenzi.mdtool.tool.MDTool;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
-/** @Author: salthai @Date: 2020/3/14 22:02 @Version 1.0 */
+/**
+ * @Author: salthai
+ * @Date: 2020/3/14 22:02
+ * @Version 1.0
+ */
 @Service
 public class ArticleService {
   @Autowired ArticleMapper articleMapper;

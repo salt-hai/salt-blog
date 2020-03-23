@@ -22,9 +22,9 @@ public class DownloadFileController {
   /**
    * 资源下载
    *
-   * @param resourceId
+   * @param resourceId          资源Id
    * @param httpServletResponse
-   * @return
+   * @return String
    * @throws Exception
    */
   @RequestMapping("/downloadResource/{resourceId}")

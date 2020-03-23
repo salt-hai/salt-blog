@@ -5,7 +5,6 @@ package com.salthai.blog.pojo;
  * @Date: 2020/1/23 0:06
  * @Version 1.0
  */
-
 public class Admin {
     /**
      * 管理员Id

@@ -2,9 +2,6 @@ package com.salthai.blog;
 
 import com.salthai.blog.mapper.ArticleMapper;
 import com.salthai.blog.pojo.Article;
-import com.salthai.blog.utils.Html2Text;
-import com.youbenzi.mdtool.tool.MDTool;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -13,7 +10,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/** @Author: salthai @Date: 2020/2/12 19:25 @Version 1.0 */
+/**
+ * @Author: salthai
+ * @Date: 2020/2/12 19:25
+ * @Version 1.0
+ */
 @SpringBootTest
 public class ArticleMapperTest {
   @Autowired ArticleMapper articleMapper;
@@ -41,7 +42,9 @@ public class ArticleMapperTest {
   public void findAllArticle() {
     List<Article> articleList = new ArrayList<>();
     articleList = articleMapper.findAllArticle();
-    System.out.println(articleList);
+    articleList.forEach(article -> {
+      System.out.println(article);
+    });
   }
 
 

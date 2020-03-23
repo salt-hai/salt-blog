@@ -1,7 +1,6 @@
 package com.salthai.blog.controller.admin;
 
 import com.salthai.blog.pojo.Admin;
-import com.salthai.blog.service.AdminAboutService;
 import com.salthai.blog.service.admin.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +23,13 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/admin")
 public class LoginController {
-  @Autowired AdminService adminService;
-  AdminAboutService adminAboutService;
+  private AdminService adminService;
+
+  @Autowired
+  public void setAdminService(AdminService adminService) {
+    this.adminService = adminService;
+  }
+
   /**
    * 管理员入口
    *
@@ -41,7 +45,7 @@ public class LoginController {
    *
    * @param username 管理员用户名
    * @param password 管理员密码
-   * @param session
+   * @param session HttpSession
    * @return String
    * @throws Exception
    */

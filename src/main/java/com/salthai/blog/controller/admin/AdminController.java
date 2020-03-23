@@ -20,8 +20,13 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-    @Autowired
+    private
     AdminService adminService;
+
+    @Autowired
+    public void setAdminService(AdminService adminService) {
+        this.adminService = adminService;
+    }
 
     /**
      * 管理员主页管理员信息

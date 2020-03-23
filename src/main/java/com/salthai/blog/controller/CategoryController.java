@@ -3,12 +3,11 @@ package com.salthai.blog.controller;
 import com.salthai.blog.pojo.Category;
 import com.salthai.blog.service.CategoryService;
 import com.salthai.blog.utils.JsonResult;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 /**
  * @Author: salthai
@@ -17,9 +16,13 @@ import java.util.List;
  */
 @Controller
 public class CategoryController {
-    @Autowired
-    CategoryService categoryService;
 
+    private CategoryService categoryService;
+
+    @Autowired
+    public void setCategoryService(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     /**
      * SpringBoot默认传输Json

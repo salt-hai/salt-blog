@@ -13,15 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author: salthai
+ * @author salthai
  * @Date: 2020/3/12 21:48
  * @Version 1.0
  */
 @Configuration
-/**
- * 爷哭了，不要继承WebMvcConfigurerAdapter,WebMvcConfigurationSupport
- */
-public class fastJsonConfig implements WebMvcConfigurer {
+
+public class JsonConfig implements WebMvcConfigurer {
 
     /**
      * 使用阿里 fastjson 作为 JSON MessageConverter

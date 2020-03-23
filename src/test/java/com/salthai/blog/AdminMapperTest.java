@@ -2,13 +2,14 @@ package com.salthai.blog;
 
 import com.salthai.blog.mapper.AdminMapper;
 import com.salthai.blog.pojo.Admin;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-
-/** @Author: salthai @Date: 2020/2/2 13:02 @Version 1.0 */
+/**
+ * @Author: salthai
+ * @Date: 2020/2/2 13:02
+ * @Version 1.0
+ */
 @SpringBootTest
 public class AdminMapperTest {
   @Autowired AdminMapper adminMapper;

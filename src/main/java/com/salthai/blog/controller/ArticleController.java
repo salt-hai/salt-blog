@@ -4,15 +4,14 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.salthai.blog.pojo.Article;
 import com.salthai.blog.service.ArticleService;
+import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * @Author: salthai
@@ -21,7 +20,13 @@ import java.util.List;
  */
 @Controller
 public class ArticleController {
-  @Autowired ArticleService articleService;
+
+  private ArticleService articleService;
+
+  @Autowired
+  public void setArticleService(ArticleService articleService) {
+    this.articleService = articleService;
+  }
 
   /**
    * index
@@ -68,8 +73,8 @@ public class ArticleController {
    * 文章分类页
    *
    * @param modelMap
-   * @param start 从0开始
-   * @param size 每页6条
+   * @param start    从0开始
+   * @param size     每页6条
    * @return String
    * @throws Exception
    */

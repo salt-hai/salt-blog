@@ -2,7 +2,13 @@ package com.salthai.blog.utils;
 
 import java.security.MessageDigest;
 
-/** MD5加密 @Author: salthai @Date: 2020/3/20 20:29 @Version 1.0 */
+/**
+ * MD5加密
+ *
+ * @Author: salthai
+ * @Date: 2020/3/20 20:29
+ * @Version 1.0
+ */
 public class Md5Util {
   private static String byteArrayToHexString(byte b[]) {
     StringBuffer resultSb = new StringBuffer();

@@ -51,12 +51,12 @@
                             <a aria-expanded="false" role="button" th:href="@{/resource/getAllResource}">资源下载</a>
                         </li>
                         <li class="dropdown  active">
-                            <a aria-expanded="false" role="button" href="about.html">关于</a>
+                            <a aria-expanded="false" role="button" th:href="@{/index/getAdminAbout}">关于</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <a href="login.html">
+                            <a th:href="@{/admin/login}">
                                 <i class="fa fa-check"></i>管理员
                             </a>
                         </li>

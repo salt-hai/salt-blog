@@ -2,10 +2,9 @@ package com.salthai.blog.service;
 
 import com.salthai.blog.mapper.ResourceMapper;
 import com.salthai.blog.pojo.Resource;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @Author: salthai
@@ -14,6 +13,7 @@ import java.util.List;
  */
 @Service
 public class ResourceService {
+
     @Autowired
     ResourceMapper resourceMapper;
 

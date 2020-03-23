@@ -14,8 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class AdminAboutController {
+
+    private AdminAboutService adminAboutService;
+
     @Autowired
-    AdminAboutService adminAboutService;
+    public void setAdminAboutService(AdminAboutService adminAboutService) {
+        this.adminAboutService = adminAboutService;
+    }
 
     /**
      * 关于页面信息
@@ -23,7 +28,7 @@ public class AdminAboutController {
      * @param modelMap
      * @return String
      */
-    @RequestMapping("/admin/getAdminAbout")
+    @RequestMapping("/index/getAdminAbout")
     public String getAdminAbout(ModelMap modelMap) {
         Admin admin = adminAboutService.findAdminAbout();
         modelMap.addAttribute("adminAbout", admin);

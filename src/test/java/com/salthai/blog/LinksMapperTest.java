@@ -2,16 +2,18 @@ package com.salthai.blog;
 
 import com.salthai.blog.mapper.LinksMapper;
 import com.salthai.blog.pojo.Links;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.zip.DataFormatException;
 
-/** @Author: salthai @Date: 2020/2/16 12:12 @Version 1.0 */
+/**
+ * @Author: salthai
+ * @Date: 2020/2/16 12:12
+ * @Version 1.0
+ */
 @SpringBootTest
 public class LinksMapperTest {
   @Autowired LinksMapper linksMapper;
