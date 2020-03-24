@@ -60,7 +60,6 @@ public class LoginController {
     if (admin != null) {
       //    session保存管理员昵称，用于拦截
       session.setAttribute("nickName", admin.getNickName());
-      System.out.println(admin.getNickName());
       //    session保存管理员Id
       session.setAttribute("adminId", admin.getAdminId());
       // 重定向到请求/admin/adminIndex

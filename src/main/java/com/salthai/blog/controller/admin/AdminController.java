@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -46,7 +47,7 @@ public class AdminController {
      *
      * @return
      */
-    @RequestMapping({"/adminInfo"})
+    @RequestMapping("/adminInfo")
     public String adminInfo(ModelMap modelMap) {
         Admin admin = adminService.findAdminAbout();
         modelMap.addAttribute("admin", admin);
@@ -66,7 +67,8 @@ public class AdminController {
     public String updateAdminPassword(
             @RequestParam("password1") String password1,
             @RequestParam("password2") String password2,
-            HttpServletRequest request)
+            HttpServletRequest request,
+            RedirectAttributes redirectAttributes)
             throws Exception {
         if (password1.length() != 0 && password2.length() != 0) {
             if (password1.equals(password2)) {
@@ -81,18 +83,15 @@ public class AdminController {
                     request.getSession().removeAttribute("errorMsg");
                     return "redirect:/admin/logout";
                 } else {
-                    request.getSession().removeAttribute("errorMsg");
-                    request.getSession().setAttribute("errorMsg", "修改失败");
-                    return "admin/adminInfo";
+                    redirectAttributes.addFlashAttribute("errorMsg", "修改失败");
+                    return "redirect:/admin/adminInfo";
                 }
             }
-            request.getSession().removeAttribute("errorMsg");
-            request.getSession().setAttribute("errorMsg", "两次密码不同");
-            return "admin/adminInfo";
+            redirectAttributes.addFlashAttribute("errorMsg", "两次密码不同");
+            return "redirect:/admin/adminInfo";
         }
-        request.getSession().removeAttribute("errorMsg");
-        request.getSession().setAttribute("errorMsg", "请输入密码");
-        return "admin/adminInfo";
+        redirectAttributes.addFlashAttribute("errorMsg", "您啥也没输入，请输入密码");
+        return "redirect:/admin/adminInfo";
     }
 
     /**
@@ -105,11 +104,12 @@ public class AdminController {
             @RequestParam("nickName") String nickName,
             @RequestParam("adminAddress") String adminAddress,
             @RequestParam("adminAbout") String adminAbout,
-            HttpServletRequest request
+            HttpServletRequest request,
+            RedirectAttributes redirectAttributes
     ) throws Exception {
         if (nickName.length() == 0 && adminAddress.length() == 0 && adminAbout.length() == 0) {
-            request.getSession().setAttribute("errorMsg", "您啥也没输入");
-            return "/admin/adminInfo";
+            redirectAttributes.addFlashAttribute("errorMsg", "您啥也没输入");
+            return "redirect:/admin/adminInfo";
         } else {
             int adminId = (int) request.getSession().getAttribute("adminId");
             Admin admin = new Admin();
@@ -117,8 +117,13 @@ public class AdminController {
             admin.setAdminAddress(adminAddress);
             admin.setAdminAbout(adminAbout);
             admin.setAdminId(adminId);
-            adminService.updateAdminInfo(admin);
-            return "redirect:/admin/adminIndex";
+            if (adminService.updateAdminInfo(admin)) {
+                return "redirect:/admin/adminIndex";
+            } else {
+                redirectAttributes.addFlashAttribute("errorMsg", "修改失败");
+                return "redirect:/admin/adminInfo";
+            }
+
         }
     }
 }

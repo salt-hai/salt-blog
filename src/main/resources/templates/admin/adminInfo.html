@@ -82,7 +82,7 @@
                     </div>
                     <div class="ibox-content col-sm-12">
                         <div class="alert alert-danger col-sm-12">注意!!修改成功管理员密码,需要重新登录。</div>
-                        <div class="alert alert-danger" th:text="${session.errorMsg}"></div>
+                        <div class="alert alert-danger" th:text="${errorMsg}"></div>
                         <form method="post" class="form-horizontal" th:action="@{/admin/updateAdminPassword}">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -125,9 +125,8 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">关于：</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="adminAbout" id="adminAbout" class="form-control"
-                                               placeholder="请输入文本" th:value="${admin.adminAbout}"> <span
-                                            class="help-block m-b-none">输入介绍自己的信息</span>
+                                        <textarea id="adminAbout" name="adminAbout" th:text="${admin.adminAbout}"
+                                                  class="form-control" required="" aria-required="true"></textarea>
                                     </div>
                                 </div>
                             </div>

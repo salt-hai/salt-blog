@@ -31,6 +31,10 @@ public class Article {
      */
     private int articleBelong;
     /**
+     * 文章隶属分类，默认：0 “其他”分类
+     */
+    private String categoryName;
+    /**
      * 是否首页显示
      * 1为显示0为不显示，默认显示：1
      */
@@ -104,6 +108,14 @@ public class Article {
         this.articleDepict = articleDepict;
     }
 
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
@@ -113,6 +125,7 @@ public class Article {
                 ", articleTime='" + articleTime + '\'' +
                 ", articleContent='" + articleContent + '\'' +
                 ", articleBelong=" + articleBelong +
+                ", categoryName='" + categoryName + '\'' +
                 ", articleShow=" + articleShow +
                 ", articleDepict='" + articleDepict + '\'' +
                 '}';

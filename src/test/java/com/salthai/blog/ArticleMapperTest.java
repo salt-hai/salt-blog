@@ -33,6 +33,7 @@ public class ArticleMapperTest {
     article.setArticleContent("测试");
     article.setArticleAuthor("salt");
     article.setArticleBelong(1);
+    article.setCategoryName("技术");
     article.setArticleShow(1);
     article.setArticleTime(articleTime);
     articleMapper.addArticle(article);
@@ -67,7 +68,6 @@ public class ArticleMapperTest {
     }
   }
 
-  /** 测试更新文章信息，失败 */
 
   public void updateArticle() {
     // 获取当前时间
@@ -77,12 +77,13 @@ public class ArticleMapperTest {
     // 强制类型转换
     String articleTime = df.format(date);
     Article article = new Article();
-    article.setArticleId(1);
+    article.setArticleId(11);
     article.setArticleTitle("Markdown简单使用方法");
     article.setArticleContent("测试");
     article.setArticleAuthor("salt");
     article.setArticleBelong(1);
     article.setArticleShow(1);
+    article.setCategoryName("技术");
     article.setArticleTime(articleTime);
     articleMapper.updateArticle(article);
     System.out.println("更新成功");
@@ -97,11 +98,6 @@ public class ArticleMapperTest {
     System.out.println("更新状态成功");
   }
 
-
-  public void updateArticleBelong() {
-    articleMapper.updateArticleBelong(1, 2);
-    System.out.println("success");
-  }
 
   /** 获取时间 */
   public void time() {

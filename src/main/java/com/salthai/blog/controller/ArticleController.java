@@ -4,14 +4,14 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.salthai.blog.pojo.Article;
 import com.salthai.blog.service.ArticleService;
-import java.util.List;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * @Author: salthai
@@ -40,7 +40,6 @@ public class ArticleController {
   @RequestMapping("/")
   public String index(
       ModelMap modelMap,
-      HttpSession httpSession,
       @RequestParam(value = "start", defaultValue = "0") int start,
       @RequestParam(value = "size", defaultValue = "6") int size)
       throws Exception {
@@ -48,7 +47,6 @@ public class ArticleController {
     List<Article> articleList = articleService.getArticleShowList(1);
     PageInfo<Article> pageInfo = new PageInfo<>(articleList);
     modelMap.addAttribute("pageInfo", pageInfo);
-    System.out.println("------/success------");
     return "index";
   }
 

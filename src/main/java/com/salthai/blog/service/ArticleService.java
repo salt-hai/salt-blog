@@ -4,10 +4,11 @@ import com.salthai.blog.mapper.ArticleMapper;
 import com.salthai.blog.pojo.Article;
 import com.salthai.blog.utils.Html2Text;
 import com.youbenzi.mdtool.tool.MDTool;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author: salthai
@@ -54,7 +55,7 @@ public class ArticleService {
       //            Html转text
       String articleDepictText = Html2Text.getContent(articleContent);
       //            截取字符串用作描述
-      String articleDepict = articleDepictText.substring(0, 80);
+      String articleDepict = articleDepictText.substring(0, 50);
       article.setArticleDepict(articleDepict);
       //            把转换为Html格式的文章内容重新添加进Article的articleContent属性
       article.setArticleContent(articleContent);

@@ -37,7 +37,7 @@
                                data-toggle="dropdown"> 管理 <span class="caret"></span></a>
                             <ul role="menu" class="dropdown-menu">
                                 <!-- 分类列表 -->
-                                <li><a href="articleAdmin.html">文章管理</a>
+                                <li><a th:href="@{/admin/articleAdmin}">文章管理</a>
                                 </li>
                                 <li><a href="adminCategory.html">分类管理</a>
                                 </li>
@@ -48,7 +48,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a aria-expanded="false" role="button" href="articleEdit.html">写作</a>
+                            <a aria-expanded="false" role="button" th:href="@{/admin/addArticle}">写作</a>
                         </li>
 
                         <li class="dropdown">
