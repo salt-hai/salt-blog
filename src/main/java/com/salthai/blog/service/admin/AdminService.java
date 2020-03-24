@@ -44,12 +44,7 @@ public class AdminService {
     return adminMapper.updateAdminPassword(admin);
   }
 
-  /**
-   * 更新管理员信息
-   *
-   * @param admin
-   * @return boolean
-   */
+
   public boolean updateAdminInfo(Admin admin) {
     return adminMapper.updateAdminInfo(admin);
   }

@@ -47,7 +47,9 @@ public class AdminController {
      * @return
      */
     @RequestMapping({"/adminInfo"})
-    public String adminInfo() {
+    public String adminInfo(ModelMap modelMap) {
+        Admin admin = adminService.findAdminAbout();
+        modelMap.addAttribute("admin", admin);
         return "admin/adminInfo";
     }
 
@@ -93,8 +95,30 @@ public class AdminController {
         return "admin/adminInfo";
     }
 
+    /**
+     * 更新管理员信息(可以加一个更新成功的弹窗提示）
+     *
+     * @return String
+     */
     @PostMapping("/updateAdminInfo")
-    public String updateAdminInfo() {
-        return "admin/adminIndex";
+    public String updateAdminInfo(
+            @RequestParam("nickName") String nickName,
+            @RequestParam("adminAddress") String adminAddress,
+            @RequestParam("adminAbout") String adminAbout,
+            HttpServletRequest request
+    ) throws Exception {
+        if (nickName.length() == 0 && adminAddress.length() == 0 && adminAbout.length() == 0) {
+            request.getSession().setAttribute("errorMsg", "您啥也没输入");
+            return "/admin/adminInfo";
+        } else {
+            int adminId = (int) request.getSession().getAttribute("adminId");
+            Admin admin = new Admin();
+            admin.setNickName(nickName);
+            admin.setAdminAddress(adminAddress);
+            admin.setAdminAbout(adminAbout);
+            admin.setAdminId(adminId);
+            adminService.updateAdminInfo(admin);
+            return "redirect:/admin/adminIndex";
+        }
     }
 }

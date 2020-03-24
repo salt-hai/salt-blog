@@ -105,7 +105,8 @@
                                         <td th:text="${resource.resourceName}">Java疯狂讲义</td>
                                         <td th:text="${resource.resourceTime}">2020-02-13 20:05:51</td>
                                         <td>
-                                            <a onclick="downloadFile()">下载</a>
+                                            <!--                                            研究下怎么传值-->
+                                            <a th:onclick="downloadFile([[${resource.resourceId}]])">下载</a>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -171,13 +172,16 @@
         th:src="@{~/js/demo/peity-demo.js}"></script>
 
 <script>
-    function downloadFile() {
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:8080/downloadResource/1",
-            async: true,
-            cache: true,
-        })
+    function downloadFile(resourceId) {
+        //js弹窗
+        var r = confirm("是否下载!");
+        if (r == true) {
+            window.location.href = "/downloadResource/" + resourceId;
+
+        } else {
+            // js自带弹窗
+            alert("取消下载");
+        }
     }
 </script>
 </body>

@@ -4,8 +4,6 @@ import com.salthai.blog.pojo.Admin;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 /** @Author: salthai @Date: 2020/1/26 11:46 @Version 1.0 */
 @Mapper
 @Repository
@@ -70,9 +68,9 @@ public interface AdminMapper {
    * 更新管理员信息
    *
    * @param admin
-   * @return int
+   * @return
    */
   @Update(
-      "update admin set username=#{username},nickName=#{nickName},adminAddress=#{adminAddress},adminAbout=#{adminAbout} where adminId=#{adminId}")
+          "update admin set nickName=#{nickName},adminAddress=#{adminAddress},adminAbout=#{adminAbout} where adminId=#{adminId}")
   public boolean updateAdminInfo(Admin admin);
 }

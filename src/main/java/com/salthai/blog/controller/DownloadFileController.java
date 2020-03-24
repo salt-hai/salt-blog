@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URLEncoder;
 
 /**
  * @Author: salthai
@@ -28,6 +30,7 @@ public class DownloadFileController {
    * @throws Exception
    */
   @RequestMapping("/downloadResource/{resourceId}")
+  @ResponseBody
   public String downloadFile(@PathVariable int resourceId, HttpServletResponse httpServletResponse)
           throws Exception {
     //        根据资源Id查找详细信息，资源名称，资源目录，用于下载
@@ -35,12 +38,13 @@ public class DownloadFileController {
     String resourcePath = resourceService.findByResourceId(resourceId).getResourcePath();
     System.out.println(resourceName);
     System.out.println(resourcePath);
-    File file = new File(resourcePath + "/" + resourceName);
+    File file = new File(resourcePath);
     //        文件路径是否存在
     if (file.exists()) {
       // 设置强制下载打开
-      httpServletResponse.setContentType("application/force-download");
-      httpServletResponse.addHeader("Content-Disposition", "attachment;fileName=" + resourceName);
+      httpServletResponse.setContentType("application/octet-stream");
+      httpServletResponse.setHeader("content-type", "application/octet-stream");
+      httpServletResponse.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(resourceName, "UTF-8"));
       byte[] buffer = new byte[1024];
       FileInputStream fileInputStream = null;
       BufferedInputStream bufferedInputStream = null;
@@ -54,7 +58,8 @@ public class DownloadFileController {
           outputStream.write(buffer, 0, i);
           i = bufferedInputStream.read(buffer);
         }
-        System.out.println("success");
+        System.out.println("成功下载");
+        return "success";
       } catch (Exception e) {
         e.printStackTrace();
       } finally {
@@ -76,6 +81,6 @@ public class DownloadFileController {
       }
     }
     System.out.println("-----失败------");
-    return null;
+    return "下载失败";
   }
 }
