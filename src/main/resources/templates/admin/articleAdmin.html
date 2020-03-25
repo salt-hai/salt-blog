@@ -119,7 +119,8 @@
 													20:05:51
 												</td>
 												<td th:text="${article.categoryName}" th:id="categoryName">技术</td>
-												<td><a href="articleUpdate.html">编辑</a>
+												<td>
+													<a th:href="@{/admin/toArticleUpdate/{articleId}(articleId=${article.articleId})}">编辑</a>
 													<!-- class 里面的函数，点击事件 -->
 												<td>
 													<button class="btn btn-warning btn-sm"

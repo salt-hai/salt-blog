@@ -34,4 +34,17 @@ public class AdminArticleService {
   public boolean deleteArticleByArticleId(int articleId) {
     return articleMapper.deleteByArticleId(articleId);
   }
+
+  /**
+   * 查找文章详细信息
+   *
+   * @param articleId 文章Id
+   * @return
+   */
+  public Article findByArticleId(int articleId) {
+    Article article = new Article();
+    article = articleMapper.findByArticleId(articleId);
+    return article;
+  }
+
 }

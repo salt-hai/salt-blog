@@ -3,14 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>修改文章内容</title>
-    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="css/font-awesome.css?v
-		=4.4.0" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/plugins/markdown/bootstrap-markdown.min.css"/>
-    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+    <title>更新文章内容</title>
+    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
+    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet" th:href="@{~/css/font-awesome.css}"/>
+    <link href="css/animate.css" rel="stylesheet" th:href="@{~/css/animate.css}"/>
+    <link href="css/style.css?v=4.1.0" rel="stylesheet" th:href="@{~/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" href="css/plugins/markdown/bootstrap-markdown.min.css"
+          th:href="@{~/css/plugins/markdown/bootstrap-markdown.min.css}"/>
 </head>
+
 <body class="gray-bg top-navigation">
 <div id="page-wrapper" class="gray-bg">
     <div class="row border-bottom white-bg">
@@ -26,29 +27,29 @@
             <div class="navbar-collapse collapse" id="navbar">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a aria-expanded="false" role="button" href="adminIndex.html"> 控制台</a>
+                        <a aria-expanded="false" role="button" href="admin.html"> 控制台</a>
                     </li>
                     <li class="dropdown">
                         <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">
                             管理 <span class="caret"></span></a>
                         <ul role="menu" class="dropdown-menu">
                             <!-- 分类列表 -->
-                            <li><a href="articleAdmin.html">文章管理</a>
+                            <li><a th:href="@{/admin/articleAdmin}">文章管理</a>
                             </li>
-                            <li><a href="adminCategory.html">分类管理</a>
+                            <li><a href="">分类管理</a>
                             </li>
-                            <li><a href="adminInfo.html">管理员信息管理</a>
+                            <li><a th:href="@{/admin/adminInfo}">管理员信息管理</a>
                             </li>
-                            <li><a href="adminLinks.html">友情链接管理</a>
+                            <li><a href="#">友情链接管理</a>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a aria-expanded="false" role="button" href="articleEdit.html">写作</a>
+                        <a aria-expanded="false" role="button" th:href="@{/admin/addArticle}">写作</a>
                     </li>
 
                     <li class="dropdown">
-                        <a aria-expanded="false" role="button" href="adminResource.html">资源管理</a>
+                        <a aria-expanded="false" role="button" href="#">资源管理</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-top-links navbar-right">
@@ -62,85 +63,100 @@
         </nav>
     </div>
     <!-- 表单填写文章信息,注意Bootstrap 栅格化-->
+
     <div class="row">
         <div class="col-sm-12">
             <div class="ibox-title">
                 <h5>撰写新文章</h5>
             </div>
+            <!--            <div class="alert alert-danger" th:text="${errorMsg}"></div>-->
+            <!--            二个问题，文章分类，文章是否首页显示, 已解决->
         </div>
-
-        <!-- 内容编辑 -->
-        <div class="col-lg-7">
-            <div class="ibox-title">
-                <h5>编辑文章内容(MarkDown)</h5>
-            </div>
-            <div class="ibox-content">
-                <textarea name="content" data-provide="markdown" rows="10"></textarea>
-            </div>
-            <div class="ibox-content" align="right">
-                <button type="button" class="btn btn-primary">更新</button>
-            </div>
-        </div>
-        <!-- 其他内容选项 -->
-        <div class="col-lg-5">
-            <div class="ibox-title">
-                <h5>文章信息</h5>
-            </div>
-            <div class="ibox-content">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">标题:</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="articleTitle" class="form-control" placeholder="请输入标题">
-                    </div>
+        <form method="post" class="form-horizontal">
+            <!-- 内容编辑 -->
+            <div class="col-lg-7">
+                <div class="ibox-title">
+                    <h5>编辑文章内容(MarkDown)</h5>
+                </div>
+                <div class="ibox-content">
+                    <textarea name="articleContent" id="articleContent" data-provide="markdown" rows="10"
+                              th:text="${article.articleContent}"></textarea>
+                </div>
+                <div class="ibox-content" align="right">
+                    <button type="submit" class="btn btn-primary">发布</button>
                 </div>
             </div>
-            <div class="ibox-content">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">作者:</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="articleAuthor" class="form-control" placeholder="请输入作者">
-                    </div>
+            <!-- 其他内容选项 -->
+            <div class="col-lg-5">
+                <div class="ibox-title">
+                    <h5>文章信息</h5>
                 </div>
-            </div>
-            <div class="ibox-content">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">请选择分类:</label>
-                    <div class="col-sm-9">
-                        <select class="form-control" name="articleBelong">
-                            <option>技术</option>
-                            <option>生活</option>
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-            <div class="ibox-content">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">是否首页显示:</label>
-                    <div class="col-sm-8">
-                        <label class="radio-inline">
-                            <input type="radio" checked="" value="option1" id="optionsRadios1"
-                                   name="articleShow">yes</label>
-                        <label class="radio-inline">
-                            <input type="radio" value="option2" id="optionsRadios2" name="articleShow">no</label>
-                    </div>
-                </div>
-            </div>
-            <!-- 选择时间 -->
-            <div class="ibox-content">
-                <form class="form-horizontal m-t">
+                <div class="ibox-content">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">选择时间:</label>
+                        <label class="col-sm-3 control-label">标题:</label>
                         <div class="col-sm-9">
-                            <input name="articleTime" class="form-control layer-date" placeholder="YYYY-MM-DD hh:mm:ss"
-                                   onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
-                            <label class="laydate-icon"></label>
+                            <input id="articleTitle" name="articleTitle" minlength="2" type="text" class="form-control"
+                                   th:value="${article.articleTitle}" required="" aria-required="true">
                         </div>
                     </div>
-            </div>
-        </div>
-    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">作者:</label>
+                        <div class="col-sm-9">
+                            <input id="articleAuthor" name="articleAuthor" minlength="2" type="text"
+                                   th:value="${article.articleAuthor}" class="form-control" required=""
+                                   aria-required="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">请选择分类:</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="articleBelong" id="articleBelong" type="int">
+                                <!--                                认真查看此段下拉回显代码-->
+                                <option th:value="${article.articleShow}" th:text="${article.categoryName}"></option>
+                                <option th:each="category : ${categoryList}"
+                                        th:selected="*{category} == ${category.categoryId}"
+                                        th:value="${category.categoryId}" th:text="${category.categoryName}"></option>
+                            </select>
+                        </div>
+                    </div>
 
+                </div>
+                <div class="ibox-content">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">是否首页显示:</label>
+                        <div class="col-sm-8">
+                            <label class="radio-inline">
+                                <input type="radio" value="1" id="articleShow"
+                                       th:field="*{article.articleShow}"
+                                       name=" articleShow">yes</label>
+                            <label class="radio-inline">
+                                <input type="radio" value="0"
+                                       th:field="*{article.articleShow}"
+                                       name="articleShow">no</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- 选择时间 -->
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">选择时间:</label>
+                            <div class="col-sm-9">
+                                <input name="articleTime" id="articleTime" class="form-control layer-date"
+                                       th:value="${article.articleTime}"
+                                       placeholder="YYYY-MM-DD hh:mm:ss"
+                                       onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+                                <label class="laydate-icon"></label>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </form>
+        </div>
     <!-- 页脚 -->
     <div class="footer navbar-fixed-bottom">
         <div class="pull-right">
@@ -152,23 +168,26 @@
         </div>
 
     </div>
-</div>
-</div>
-<!-- 全局js -->
-<script src="js/jquery.min.js?v=2.1.4"></script>
-<script src="js/bootstrap.min.js?v=3.3.6"></script>
+    </div>
 
-<!-- 自定义js -->
-<script src="js/content.js?v=1.0.0"></script>
+    <!-- 全局js -->
+    <script src="js/jquery.min.js?v=2.1.4" th:src="@{~/js/jquery.min.js}"></script>
+    <script src="js/bootstrap.min.js?v=3.3.6" th:src="@{~/js/bootstrap.min.js}"></script>
 
-<!-- simditor -->
-<script type="text/javascript" src="js/plugins/markdown/markdown.js"></script>
-<script type="text/javascript" src="js/plugins/markdown/to-markdown.js"></script>
-<script type="text/javascript" src="js/plugins/markdown/bootstrap-markdown.js"></script>
-<script type="text/javascript" src="js/plugins/markdown/bootstrap-markdown.zh.js"></script>
 
-<!-- layerDate plugin javascript -->
-<script src="js/plugins/layer/laydate/laydate.js"></script>
+    <!-- simditor -->
+    <script type="text/javascript" src="js/plugins/markdown/markdown.js"
+            th:src="@{~/js/plugins/markdown/markdown.js}"></script>
+    <script type="text/javascript" src="js/plugins/markdown/to-markdown.js"
+            th:src="@{~/js/plugins/markdown/to-markdown.js}"></script>
+    <script type="text/javascript" src="js/plugins/markdown/bootstrap-markdown.js"
+            th:src="@{~/js/plugins/markdown/bootstrap-markdown.js}"></script>
+    <script type="text/javascript" src="js/plugins/markdown/bootstrap-markdown.zh.js"
+            th:src="@{~/js/plugins/markdown/bootstrap-markdown.zh.js}"></script>
+
+    <!-- layerDate plugin javascript -->
+    <script src="js/plugins/layer/laydate/laydate.js"
+            th:src="@{~/js/plugins/layer/laydate/laydate.js}"></script>
 
 </body>
 

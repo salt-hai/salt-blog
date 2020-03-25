@@ -55,6 +55,7 @@ public class AdminArticleController {
    */
   @RequestMapping({"/addArticle"})
   public String toArticleEdit(ModelMap modelMap) throws Exception {
+    //得到分类信息，带给前端，写文章要用
     List<Category> categoryList = new ArrayList<>();
     categoryList = categoryService.findAllCategory();
     modelMap.addAttribute("categoryList", categoryList);
@@ -122,6 +123,25 @@ public class AdminArticleController {
         return "redirect:/admin/articleAdmin";
       }
     }
+  }
+
+  /**
+   * 更新文章入口，并进行数据回显
+   *
+   * @param modelMap  ModeMap对象
+   * @param articleId 文章Id
+   * @return
+   * @throws Exception
+   */
+  @RequestMapping("/toArticleUpdate/{articleId}")
+  public String toArticleUpdate(ModelMap modelMap, @PathVariable int articleId) throws Exception {
+    Article article = new Article();
+    article = adminArticleService.findByArticleId(articleId);
+    List<Category> categoryList = new ArrayList<>();
+    categoryList = categoryService.findAllCategory();
+    modelMap.addAttribute("categoryList", categoryList);
+    modelMap.addAttribute("article", article);
+    return "admin/articleUpdate";
   }
 
   /**
