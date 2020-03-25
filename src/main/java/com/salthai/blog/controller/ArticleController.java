@@ -31,8 +31,8 @@ public class ArticleController {
   /**
    * index
    *
-   * @param modelMap
-   * @param start    从0开始
+   * @param modelMap ModelMap对象
+   * @param start    0页开始
    * @param size     每页6条
    * @return String
    * @throws Exception
@@ -53,8 +53,8 @@ public class ArticleController {
   /**
    * 详情页
    *
-   * @param modelMap
-   * @param articleId
+   * @param modelMap ModelMap对象
+   * @param articleId 文章Id
    * @return article
    * @throws Exception
    */

@@ -49,7 +49,7 @@ public class AdminArticleController {
   /**
    * 写作入口
    *
-   * @param modelMap
+   * @param modelMap ModelMap对象
    * @return String
    * @throws Exception
    */
@@ -64,13 +64,13 @@ public class AdminArticleController {
   /**
    * 添加文章请求（代码太憨需要重构）
    *
-   * @param articleContent
-   * @param articleTitle
-   * @param articleAuthor
-   * @param articleBelong
-   * @param articleShow
-   * @param articleTime
-   * @param redirectAttributes
+   * @param articleContent     文章内容
+   * @param articleTitle       文章标题
+   * @param articleAuthor      文章作者
+   * @param articleBelong      文章所属分类
+   * @param articleShow        文章是否首页显示
+   * @param articleTime        文章创建时间
+   * @param redirectAttributes redirectAttributes对象
    * @return
    * @throws Exception
    */
@@ -96,6 +96,12 @@ public class AdminArticleController {
       redirectAttributes.addFlashAttribute("errorMsg", "文章字数需要大于50个字符");
       return "redirect:/admin/addArticle";
     } else {
+      article.setArticleContent(articleContent);
+      article.setArticleTitle(articleTitle);
+      article.setArticleAuthor(articleAuthor);
+      article.setArticleBelong(articleBelong);
+      article.setArticleShow(articleShow);
+      article.setCategoryName(categoryService.findByCategoryId(categoryId).getCategoryName());
 //      如果用户没有设置时间，系统默认取当前时间
       if (articleTime.length() == 0) {
         Date date = new Date();
@@ -104,23 +110,12 @@ public class AdminArticleController {
         // 强制类型转换
         String articleTime1 = df.format(date);
         articleTime = articleTime1;
-        article.setArticleContent(articleContent);
-        article.setArticleTitle(articleTitle);
-        article.setArticleAuthor(articleAuthor);
-        article.setArticleBelong(articleBelong);
-        article.setArticleShow(articleShow);
-        article.setCategoryName(categoryService.findByCategoryId(categoryId).getCategoryName());
         article.setArticleTime(articleTime);
         adminArticleService.addArticle(article);
         //添加成功去文章管理页
         return "redirect:/admin/articleAdmin";
       } else {
-        article.setArticleContent(articleContent);
-        article.setArticleTitle(articleTitle);
-        article.setArticleAuthor(articleAuthor);
-        article.setArticleBelong(articleBelong);
-        article.setArticleShow(articleShow);
-        article.setCategoryName(categoryService.findByCategoryId(categoryId).getCategoryName());
+        //使用用户设置的时间
         article.setArticleTime(articleTime);
         adminArticleService.addArticle(article);
         //添加成功去文章管理页
@@ -132,8 +127,8 @@ public class AdminArticleController {
   /**
    * 文章管理页
    *
-   * @param modelMap 视图对象
-   * @param start    0页开始
+   * @param modelMap ModelMap 对象
+   * @param start    开始页
    * @param size     每页6条
    * @return String
    * @throws Exception
@@ -155,7 +150,7 @@ public class AdminArticleController {
   /**
    * 删除文章
    *
-   * @param articleId
+   * @param articleId 文章Id
    * @return
    * @throws Exception
    */

@@ -57,9 +57,9 @@ public class AdminController {
     /**
      * 更新管理员密码
      *
-     * @param password1
-     * @param password2
-     * @param request
+     * @param password1 新密码
+     * @param password2 再次输入的新密码
+     * @param request   HttpServletRequest对象
      * @return String
      * @throws Exception
      */

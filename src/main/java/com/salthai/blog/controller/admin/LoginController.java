@@ -51,7 +51,7 @@ public class LoginController {
    *
    * @param username 管理员用户名
    * @param password 管理员密码
-   * @param session  HttpSession
+   * @param session  HttpSession对象
    * @return String
    * @throws Exception
    */
@@ -79,8 +79,8 @@ public class LoginController {
   /**
    * 退出登录，并清除session里admin的信息
    *
-   * @param request
-   * @param session
+   * @param request HttpServletRequest对象
+   * @param session HttpSession对象
    * @return
    */
   @GetMapping("/logout")
