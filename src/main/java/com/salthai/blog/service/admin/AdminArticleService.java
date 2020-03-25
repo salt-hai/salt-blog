@@ -24,4 +24,14 @@ public class AdminArticleService {
   public int addArticle(Article article) {
     return articleMapper.addArticle(article);
   }
+
+  /**
+   * 删除文章
+   *
+   * @param articleId
+   * @return
+   */
+  public boolean deleteArticleByArticleId(int articleId) {
+    return articleMapper.deleteByArticleId(articleId);
+  }
 }

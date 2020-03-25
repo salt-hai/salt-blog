@@ -1,6 +1,5 @@
 package com.salthai.blog.mapper;
 
-import com.salthai.blog.pojo.Article;
 import com.salthai.blog.pojo.Category;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
@@ -73,7 +72,7 @@ public interface CategoryMapper {
      * @return int
      */
     @Delete("delete from category where categoryId= #{categoryId} ")
-    public int deleteByCategoryId(int categoryId);
+    public boolean deleteByCategoryId(int categoryId);
 
     /**
      * 更新修改一条分类

@@ -83,8 +83,8 @@ public interface ArticleMapper {
      * 删除文章
      *
      * @param articleId
-     * @return void
+     * @return boolean
      */
     @Delete("delete from article where articleId= #{articleId} ")
-    public void deleteByArticleId(int articleId);
+    public boolean deleteByArticleId(int articleId);
 }

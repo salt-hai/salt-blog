@@ -3,11 +3,12 @@ package com.salthai.blog.controller;
 import com.salthai.blog.pojo.Category;
 import com.salthai.blog.service.CategoryService;
 import com.salthai.blog.utils.JsonResult;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * @Author: salthai
@@ -47,6 +48,7 @@ public class CategoryController {
     @GetMapping("/category/getFastJsonCategory")
     public JsonResult<List> getFastJsonCategory() {
         List<Category> categoryList = categoryService.findAllCategory();
-        return new JsonResult<>(categoryList, "success");
+        return new JsonResult(categoryList, "success");
+        //        return new  JsonResult("0","error");
     }
 }

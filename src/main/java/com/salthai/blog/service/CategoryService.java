@@ -26,4 +26,15 @@ public class CategoryService {
         List<Category> categoryList = categoryMapper.findAllCategory();
         return categoryList;
     }
+
+    /**
+     * 查看分类详细信息
+     *
+     * @param categoryId
+     * @return
+     */
+    public Category findByCategoryId(int categoryId) {
+        Category category = categoryMapper.findByCategoryId(categoryId);
+        return category;
+    }
 }

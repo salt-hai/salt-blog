@@ -36,8 +36,14 @@ public class LoginController {
    * @return String
    */
   @RequestMapping({"/login"})
-  public String admin() {
-    return "/admin/login";
+  public String admin(HttpServletRequest request) {
+    String nickName = (String) request.getSession().getAttribute("nickName");
+//    简单判断一下是否已经登录过了
+    if (nickName != null) {
+      return "redirect:/admin/adminIndex";
+    } else {
+      return "/admin/login";
+    }
   }
 
   /**
@@ -45,7 +51,7 @@ public class LoginController {
    *
    * @param username 管理员用户名
    * @param password 管理员密码
-   * @param session HttpSession
+   * @param session  HttpSession
    * @return String
    * @throws Exception
    */

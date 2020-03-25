@@ -2,6 +2,7 @@ package com.salthai.blog;
 
 import com.salthai.blog.mapper.ArticleMapper;
 import com.salthai.blog.pojo.Article;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -56,7 +57,7 @@ public class ArticleMapperTest {
 
 
   public void findByArticleId() {
-    Article article = articleMapper.findByArticleId(4);
+    Article article = articleMapper.findByArticleId(11);
     System.out.println(article);
   }
 
@@ -99,7 +100,9 @@ public class ArticleMapperTest {
   }
 
 
-  /** 获取时间 */
+  /**
+   * 获取时间
+   */
   public void time() {
     Date date = new Date();
     // 设置日期格式
@@ -107,5 +110,16 @@ public class ArticleMapperTest {
     // 强制类型转换
     String articleTime = df.format(date);
     System.out.println(articleTime);
+  }
+
+  @Test
+  public void deleteArticle() {
+
+    if (articleMapper.deleteByArticleId(11)) {
+      System.out.println("success");
+    } else {
+      System.out.println("失败");
+    }
+
   }
 }

@@ -122,7 +122,8 @@
 												<td><a href="articleUpdate.html">编辑</a>
 													<!-- class 里面的函数，点击事件 -->
 												<td>
-													<button class="btn btn-warning btn-sm" th:onclick="deleteArticle()">
+													<button class="btn btn-warning btn-sm"
+															th:onclick="deleteArticle([[${article.articleId}]])">
 														删除
 													</button>
 													</a>
@@ -197,20 +198,16 @@
 			// 	});
 			// });
 
-			function deleteArticle() {
-				swal({
-							title: "您确定要删除这篇文章吗？",
-							text: "删除后将无法恢复，请谨慎操作！",
-							type: "warning",
-							showCancelButton: true,
-							confirmButtonColor: "#DD6B55",
-							confirmButtonText: "删除",
-							closeOnConfirm: false
-						}, function () {
-							// 添加Ajax操作
-							swal("删除成功！", "您已经永久删除了这篇文章。", "success");
-						}
-				);
+			function deleteArticle(articleId) {
+				//js弹窗
+				var r = confirm("是否删除此文章!");
+				if (r == true) {
+					window.location.href = "/admin/deleteArticle/" + articleId;
+					// alert("删除成功");
+				} else {
+					// js自带弹窗
+					alert("取消删除");
+				}
 			}
 		</script>
 

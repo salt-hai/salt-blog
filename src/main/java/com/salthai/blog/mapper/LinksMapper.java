@@ -58,5 +58,5 @@ public interface LinksMapper {
      * @return int
      */
     @Delete("delete from links where linksId= #{linksId} ")
-    public int deleteByLinksId(int linksId);
+    public boolean deleteByLinksId(int linksId);
 }

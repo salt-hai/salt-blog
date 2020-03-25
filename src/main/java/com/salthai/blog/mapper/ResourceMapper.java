@@ -1,6 +1,5 @@
 package com.salthai.blog.mapper;
 
-import com.salthai.blog.pojo.Links;
 import com.salthai.blog.pojo.Resource;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -60,5 +59,5 @@ public interface ResourceMapper {
      * @return int
      */
     @Delete("delete from resource where resourceId= #{resourceId} ")
-    public int deleteByResourceId(int resourceId);
+    public boolean deleteByResourceId(int resourceId);
 }
