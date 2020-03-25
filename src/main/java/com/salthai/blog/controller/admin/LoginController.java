@@ -42,7 +42,7 @@ public class LoginController {
     if (nickName != null) {
       return "redirect:/admin/adminIndex";
     } else {
-      return "/admin/login";
+      return "admin/login";
     }
   }
 
