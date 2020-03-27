@@ -23,7 +23,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/** @Author: salthai @Date: 2020/3/24 22:04 @Version 1.0 */
+/**
+ * 管理员对文章操作
+ *
+ * @Author: salthai
+ * @Date: 2020/3/24 22:04
+ * @Version 1.0
+ */
 @Controller
 @RequestMapping("/admin")
 public class AdminArticleController {
@@ -76,14 +82,14 @@ public class AdminArticleController {
    * @throws Exception
    */
   @PostMapping("/articleEdit")
-  public String articleEdit(@RequestParam("articleContent") String articleContent,
-                            @RequestParam("articleTitle") String articleTitle,
-                            @RequestParam("articleAuthor") String articleAuthor,
-                            @RequestParam("articleBelong") int articleBelong,
-                            @RequestParam("articleShow") int articleShow,
-                            @RequestParam("articleTime") String articleTime,
-                            RedirectAttributes redirectAttributes
-  )
+  public String articleEdit(
+          @RequestParam("articleContent") String articleContent,
+          @RequestParam("articleTitle") String articleTitle,
+          @RequestParam("articleAuthor") String articleAuthor,
+          @RequestParam("articleBelong") int articleBelong,
+          @RequestParam("articleShow") int articleShow,
+          @RequestParam("articleTime") String articleTime,
+          RedirectAttributes redirectAttributes)
           throws Exception {
     int categoryId = articleBelong;
     //定义一个文章最少字数
