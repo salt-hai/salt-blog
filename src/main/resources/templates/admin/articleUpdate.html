@@ -22,12 +22,12 @@
                         type="button">
                     <i class="fa fa-reorder"></i>
                 </button>
-                <a href="#" class="navbar-brand">管理员</a>
+                <a th:href="@{/admin/adminIndex}" class="navbar-brand">管理员</a>
             </div>
             <div class="navbar-collapse collapse" id="navbar">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a aria-expanded="false" role="button" href="admin.html"> 控制台</a>
+                    <li>
+                        <a aria-expanded="false" role="button" th:href="@{/admin/adminIndex}"> 控制台</a>
                     </li>
                     <li class="dropdown">
                         <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -84,7 +84,7 @@
                 </div>
                 <div class="ibox-content" align="right">
                     <button type="submit" class="btn btn-primary" id="articleId" name="articleId"
-                            th:value="${article.articleId}">发布
+                            th:value="${article.articleId}">更新
                     </button>
                 </div>
             </div>

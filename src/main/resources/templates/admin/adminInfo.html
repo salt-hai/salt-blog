@@ -26,30 +26,30 @@
                             type="button">
                         <i class="fa fa-reorder"></i>
                     </button>
-                    <a href="#" class="navbar-brand">管理员</a>
+                    <a th:href="@{/admin/adminIndex}" class="navbar-brand">管理员</a>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a aria-expanded="false" role="button" href="adminIndex.html"> 控制台</a>
+                            <a aria-expanded="false" role="button" th:href="@{/admin/adminIndex}"> 控制台</a>
                         </li>
-                        <li class="dropdown">
+                        <li class="dropdown active">
                             <a aria-expanded="false" role="button" href="#" class="dropdown-toggle"
                                data-toggle="dropdown"> 管理 <span class="caret"></span></a>
                             <ul role="menu" class="dropdown-menu">
                                 <!-- 分类列表 -->
-                                <li><a href="articleAdmin.html">文章管理</a>
+                                <li><a th:href="@{/admin/articleAdmin}">文章管理</a>
                                 </li>
                                 <li><a href="adminCategory.html">分类管理</a>
                                 </li>
-                                <li><a href="#">管理员信息管理</a>
+                                <li><a th:href="@{/admin/adminInfo}">管理员信息管理</a>
                                 </li>
                                 <li><a href="adminLinks.html">友情链接管理</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a aria-expanded="false" role="button" href="articleEdit.html">写作</a>
+                            <a aria-expanded="false" role="button" th:href="@{/admin/addArticle}">写作</a>
                         </li>
 
                         <li class="dropdown">
