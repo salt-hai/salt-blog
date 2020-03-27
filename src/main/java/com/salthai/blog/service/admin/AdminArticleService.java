@@ -53,4 +53,7 @@ public class AdminArticleService {
     return article;
   }
 
+  public boolean articleUpdate(Article article) {
+    return articleMapper.updateArticle(article);
+  }
 }

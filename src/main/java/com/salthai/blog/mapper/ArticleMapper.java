@@ -68,7 +68,7 @@ public interface ArticleMapper {
      */
     @Update("update article set articleTitle=#{articleTitle},articleAuthor=#{articleAuthor}," +
             "articleTime=#{articleTime},articleContent=#{articleContent},articleBelong=#{articleBelong},categoryName=#{categoryName},articleShow=#{articleShow} where articleId=#{articleId}")
-    public int updateArticle(Article article);
+    public boolean updateArticle(Article article);
 
     /**
      * 更新文章状态（是否首页显示）

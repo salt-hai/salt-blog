@@ -7,6 +7,7 @@ import com.salthai.blog.pojo.Category;
 import com.salthai.blog.service.ArticleService;
 import com.salthai.blog.service.CategoryService;
 import com.salthai.blog.service.admin.AdminArticleService;
+import com.salthai.blog.utils.DataUtil;
 import com.salthai.blog.utils.Html2Text;
 import com.youbenzi.mdtool.tool.MDTool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,7 +35,6 @@ public class AdminArticleController {
   private AdminArticleService adminArticleService;
   private CategoryService categoryService;
   private ArticleService articleService;
-
   @Autowired
   public void setAdminArticleService(AdminArticleService adminArticleService) {
     this.adminArticleService = adminArticleService;
@@ -51,7 +49,6 @@ public class AdminArticleController {
   public void setArticleService(ArticleService articleService) {
     this.articleService = articleService;
   }
-
   /**
    * 写作入口
    *
@@ -109,14 +106,11 @@ public class AdminArticleController {
       article.setArticleBelong(articleBelong);
       article.setArticleShow(articleShow);
       article.setCategoryName(categoryService.findByCategoryId(categoryId).getCategoryName());
-//      如果用户没有设置时间，系统默认取当前时间
+      // 如果用户没有设置时间，系统默认取当前时间
       if (articleTime.length() == 0) {
-        Date date = new Date();
-        // 设置日期格式
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        // 强制类型转换
-        String articleTime1 = df.format(date);
-        articleTime = articleTime1;
+        //使用自定义工具类获取时间
+        DataUtil dataUtil = new DataUtil();
+        articleTime = dataUtil.getDate();
         article.setArticleTime(articleTime);
         adminArticleService.addArticle(article);
         //添加成功去文章管理页
@@ -148,6 +142,67 @@ public class AdminArticleController {
     modelMap.addAttribute("categoryList", categoryList);
     modelMap.addAttribute("article", article);
     return "admin/articleUpdate";
+  }
+
+  /**
+   * 文章更新
+   *
+   * @param articleId          文章Id
+   * @param articleContent     文章内容
+   * @param articleTitle       文章标题
+   * @param articleAuthor      文章作者
+   * @param articleBelong      文章所属分类
+   * @param articleShow        是否首页显示
+   * @param articleTime        创建时间
+   * @param redirectAttributes redirectAttributes对象
+   * @return String
+   * @throws Exception
+   */
+  @PostMapping("/articleUpdate")
+  public String articleUpdate(
+          @RequestParam("articleId") int articleId,
+          @RequestParam("articleContent") String articleContent,
+          @RequestParam("articleTitle") String articleTitle,
+          @RequestParam("articleAuthor") String articleAuthor,
+          @RequestParam("articleBelong") int articleBelong,
+          @RequestParam("articleShow") int articleShow,
+          @RequestParam("articleTime") String articleTime,
+          RedirectAttributes redirectAttributes)
+          throws Exception {
+    int categoryId = articleBelong;
+    //定义一个文章最少字数
+    int articleContentLengthMim = 50;
+    //md格式转html
+    String articleContentHtml = MDTool.markdown2Html(articleContent);
+    //html转text
+    String articleContentText = Html2Text.getContent(articleContentHtml);
+    Article article = new Article();
+    if (articleContentText.length() < articleContentLengthMim) {
+      redirectAttributes.addFlashAttribute("errorMsg", "文章字数需要大于50个字符");
+      return "redirect:/admin/toArticleUpdate/" + articleId;
+    } else {
+      article.setArticleId(articleId);
+      article.setArticleContent(articleContent);
+      article.setArticleTitle(articleTitle);
+      article.setArticleAuthor(articleAuthor);
+      article.setArticleBelong(articleBelong);
+      article.setArticleShow(articleShow);
+      article.setCategoryName(categoryService.findByCategoryId(categoryId).getCategoryName());
+      //如果用户没有设置时间，则取系统当前时间
+      if (articleTime.length() == 0) {
+        DataUtil dataUtil = new DataUtil();
+        articleTime = dataUtil.getDate();
+        article.setArticleTime(articleTime);
+        adminArticleService.articleUpdate(article);
+        //更新成功去文章管理页
+        return "redirect:/admin/articleAdmin";
+      } else {
+        article.setArticleTime(articleTime);
+        adminArticleService.articleUpdate(article);
+        //更新成功去文章管理页
+        return "redirect:/admin/articleAdmin";
+      }
+    }
   }
 
   /**

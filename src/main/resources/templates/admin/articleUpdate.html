@@ -69,10 +69,10 @@
             <div class="ibox-title">
                 <h5>撰写新文章</h5>
             </div>
-            <!--            <div class="alert alert-danger" th:text="${errorMsg}"></div>-->
-            <!--            二个问题，文章分类，文章是否首页显示, 已解决->
+            <div class="alert alert-danger" th:text="${errorMsg}"></div>
+            <!--            二个问题，文章分类，文章是否首页显示, 已解决-->
         </div>
-        <form method="post" class="form-horizontal">
+        <form method="post" class="form-horizontal" th:action="@{/admin/articleUpdate}">
             <!-- 内容编辑 -->
             <div class="col-lg-7">
                 <div class="ibox-title">
@@ -83,7 +83,9 @@
                               th:text="${article.articleContent}"></textarea>
                 </div>
                 <div class="ibox-content" align="right">
-                    <button type="submit" class="btn btn-primary">发布</button>
+                    <button type="submit" class="btn btn-primary" id="articleId" name="articleId"
+                            th:value="${article.articleId}">发布
+                    </button>
                 </div>
             </div>
             <!-- 其他内容选项 -->
@@ -116,7 +118,7 @@
                         <div class="col-sm-9">
                             <select class="form-control" name="articleBelong" id="articleBelong" type="int">
                                 <!--                                认真查看此段下拉回显代码-->
-                                <option th:value="${article.articleShow}" th:text="${article.categoryName}"></option>
+                                <option th:value="${article.articleBelong}" th:text="${article.categoryName}"></option>
                                 <option th:each="category : ${categoryList}"
                                         th:selected="*{category} == ${category.categoryId}"
                                         th:value="${category.categoryId}" th:text="${category.categoryName}"></option>
