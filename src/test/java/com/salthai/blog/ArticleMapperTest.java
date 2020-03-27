@@ -2,6 +2,7 @@ package com.salthai.blog;
 
 import com.salthai.blog.mapper.ArticleMapper;
 import com.salthai.blog.pojo.Article;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -91,13 +92,15 @@ public class ArticleMapperTest {
 
 
   public void updateArticleShow() {
-    Article article = new Article();
-    article.setArticleId(1);
-    article.setArticleShow(0);
-    articleMapper.updateArticleShow(article);
+
+    articleMapper.updateArticleShow(1, 1);
     System.out.println("更新状态成功");
   }
 
+  public void updateArticleBelong() {
+    articleMapper.updateArticleBelong(0, "其他");
+    System.out.println("更新分类成功");
+  }
 
   /**
    * 获取时间
@@ -114,6 +117,16 @@ public class ArticleMapperTest {
   public void deleteArticle() {
 
     if (articleMapper.deleteByArticleId(11)) {
+      System.out.println("success");
+    } else {
+      System.out.println("失败");
+    }
+
+  }
+
+  @Test
+  public void deleteArticleByArticleBelong() {
+    if (articleMapper.deleteByArticleBelong(3)) {
       System.out.println("success");
     } else {
       System.out.println("失败");

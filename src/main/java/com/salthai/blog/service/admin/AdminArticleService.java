@@ -32,9 +32,9 @@ public class AdminArticleService {
   }
 
   /**
-   * 删除文章
+   * 删除文章(根据文章Id）
    *
-   * @param articleId
+   * @param articleId 文章Id
    * @return
    */
   public boolean deleteArticleByArticleId(int articleId) {
@@ -53,7 +53,23 @@ public class AdminArticleService {
     return article;
   }
 
+  /**
+   * 更新文章
+   *
+   * @param article 文章对象
+   * @return
+   */
   public boolean articleUpdate(Article article) {
     return articleMapper.updateArticle(article);
+  }
+
+  /**
+   * 删除文章（根据文章所属分类Id）
+   *
+   * @param articleBelong 文章所属Id
+   * @return
+   */
+  public boolean deleteByArticleBelong(int articleBelong) {
+    return articleMapper.deleteByArticleBelong(articleBelong);
   }
 }

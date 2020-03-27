@@ -71,20 +71,40 @@ public interface ArticleMapper {
     public boolean updateArticle(Article article);
 
     /**
-     * 更新文章状态（是否首页显示）
+     * 更新文章状态
      *
-     * @param article
-     * @return int
+     * @param articleId
+     * @param articleShow
+     * @return boolean
      */
     @Update("update article set articleShow=#{articleShow} where articleId=#{articleId}")
-    public int updateArticleShow(Article article);
+    public boolean updateArticleShow(int articleId, int articleShow);
 
     /**
-     * 删除文章
+     * 更新分类
+     *
+     * @param articleBelong
+     * @param categoryName
+     * @return
+     */
+    @Update("update article set categoryName=#{categoryName} where articleBelong=#{articleBelong}")
+    public boolean updateArticleBelong(int articleBelong, String categoryName);
+
+    /**
+     * 删除文章（根据文章Id）
      *
      * @param articleId
      * @return boolean
      */
     @Delete("delete from article where articleId= #{articleId} ")
     public boolean deleteByArticleId(int articleId);
+
+    /**
+     * 删除文章（根据所属分类）
+     *
+     * @param articleBelong
+     * @return
+     */
+    @Delete("delete from article where articleBelong= #{articleBelong} ")
+    public boolean deleteByArticleBelong(int articleBelong);
 }

@@ -217,7 +217,7 @@ public class AdminArticleController {
   @RequestMapping("/articleAdmin")
   public String articleAdmin(
           ModelMap modelMap,
-          @RequestParam(value = "start", defaultValue = "0") int start,
+          @RequestParam(value = "start", defaultValue = "1") int start,
           @RequestParam(value = "size", defaultValue = "6") int size)
           throws Exception {
     PageHelper.startPage(start, size);
@@ -237,7 +237,6 @@ public class AdminArticleController {
    */
   @RequestMapping("/deleteArticle/{articleId}")
   public String deleteArticleByArticleId(@PathVariable int articleId) throws Exception {
-    System.out.println(articleId);
     if (adminArticleService.deleteArticleByArticleId(articleId)) {
       return "redirect:/admin/articleAdmin";
     } else {

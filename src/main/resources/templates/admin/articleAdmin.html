@@ -41,7 +41,7 @@
 										<!-- 分类列表 -->
 										<li><a th:href="@{/admin/articleAdmin}">文章管理</a>
 										</li>
-										<li><a href="adminCategory.html">分类管理</a>
+										<li><a th:href="@{/admin/toAdminCategory}">分类管理</a>
 										</li>
 										<li><a th:href="@{/admin/adminInfo}">管理员信息管理</a>
 										</li>
@@ -182,35 +182,26 @@
 				th:href="@{~/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js}"></script>
 		<script src="js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"
 				th:href="@{~/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
-
+		<!-- Sweet alert -->
+		<script src="js/plugins/sweetalert/sweetalert.min.js"
+				th:src="@{~/js/plugins/sweetalert/sweetalert.min.js}"></script>
 		<!-- Peity -->
 		<script src="js/demo/bootstrap-table-demo.js" th:href="@{~/js/demo/bootstrap-table-demo.js}"></script>
 		<script>
-			// $('.deleteArticle').click(function () {
-			// 	swal({
-			// 		title: "您确定要删除这篇文章吗？",
-			// 		text: "删除后将无法恢复，请谨慎操作！",
-			// 		type: "warning",
-			// 		showCancelButton: true,
-			// 		confirmButtonColor: "#DD6B55",
-			// 		confirmButtonText: "删除",
-			// 		closeOnConfirm: false
-			// 	}, function () {
-			// 		// 添加Ajax操作
-			// 		swal("删除成功！", "您已经永久删除了这篇文章。", "success");
-			// 	});
-			// });
-
 			function deleteArticle(articleId) {
-				//js弹窗
-				var r = confirm("是否删除此文章!");
-				if (r == true) {
+				swal({
+					title: "您确定要删除此文章吗？",
+					text: "请谨慎操作！",
+					type: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#DD6B55",
+					confirmButtonText: "删除",
+					closeOnConfirm: false
+				}, function () {
+					//添加请求操作
 					window.location.href = "/admin/deleteArticle/" + articleId;
-					// alert("删除成功");
-				} else {
-					// js自带弹窗
-					alert("取消删除");
-				}
+					swal("删除成功！", "您已经永久删除了此文章。", "success");
+				});
 			}
 		</script>
 
