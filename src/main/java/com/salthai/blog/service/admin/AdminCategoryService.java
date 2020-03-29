@@ -33,6 +33,24 @@ public class AdminCategoryService {
    * @return
    */
   public boolean deleteByCategoryId(int categoryId) {
-    return categoryMapper.deleteByCategoryId(categoryId);
+    if (categoryMapper.deleteByCategoryId(categoryId)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * 添加分类
+   *
+   * @param category 分类的实体类
+   * @return
+   */
+  public boolean addCategory(Category category) {
+    if (categoryMapper.addCategory(category)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

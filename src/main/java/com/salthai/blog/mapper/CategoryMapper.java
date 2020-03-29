@@ -63,7 +63,7 @@ public interface CategoryMapper {
      * @return int
      */
     @Insert(" insert into category ( categoryName,categoryTime) values (#{categoryName},#{categoryTime}) ")
-    public int addCategory(Category category);
+    public boolean addCategory(Category category);
 
     /**
      * 删除分类

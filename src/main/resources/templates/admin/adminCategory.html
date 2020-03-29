@@ -97,6 +97,7 @@
                                 </div>
                             </div>
                             <!-- 模态窗口 -->
+
                             <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content animated bounceInRight">
@@ -108,28 +109,39 @@
                                             <i class="fa fa-laptop modal-icon"></i>
                                             <h4 class="modal-title">添加分类</h4>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="form-group"><label>分类名称</label> <input type="email"
-                                                                                               placeholder="请输入分类名称"
-                                                                                               class="form-control">
+                                        <!--                                    表单提交-->
+                                        <form method="post" class="form-horizontal"
+                                              role="form">
+                                            <div class="modal-body">
+                                                <div class="form-group"><label>分类名称</label>
+                                                    <input id="categoryName" name="categoryName"
+                                                           type="text"
+                                                           placeholder="请输入分类名称" class="form-control"
+                                                           minlength="2" required=""
+                                                           aria-required="true"/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
-                                            <button type="button" class="btn btn-primary">保存</button>
-                                        </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-white" data-dismiss="modal">关闭
+                                                </button>
+                                                <button type="button" class="btn btn-primary"
+                                                        th:onclick="addCategory()">保存
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
+
                             <!-- 管理表格 -->
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
                                         <th></th>
-                                        <th id="categoryId">categoryId</th>
-                                        <th id="categoryName">分类名称</th>
-                                        <th id="categoryTime">创建日期</th>
+                                        <th th:id="categoryId">categoryId</th>
+                                        <th th:id="categoryName">分类名称</th>
+                                        <th th:id="categoryTime">创建日期</th>
                                         <th id="categoryEdit">编辑</th>
                                         <th id="categoryDelete">删除</th>
                                     </tr>
@@ -139,11 +151,11 @@
                                         <td>
                                             <input type="checkbox" name="input[]">
                                         </td>
-                                        <td th:text="${category.categoryId}" th:id="categoryId">1</td>
-                                        <td th:text="${category.categoryName}" th:id="categoryName">技术</td>
-                                        <td th:text="${category.categoryTime}" th:id="categoryTime">2020-02-12 19:37
+                                        <td th:text="${category.categoryId}">1</td>
+                                        <td th:text="${category.categoryName}">技术</td>
+                                        <td th:text="${category.categoryTime}">2020-02-12 19:37
                                         </td>
-                                        <td><a href="articleUpdate.html">编辑</a>
+                                        <td><a href="#">编辑</a>
                                         <td>
                                             <button class="btn btn-warning btn-sm"
                                                     th:onclick="deleteCategory([[${category.categoryId}]])">删除
@@ -189,9 +201,7 @@
 <!-- 全局js -->
 <script src="js/jquery.min.js?v=2.1.4" th:src="@{~/js/jquery.min.js}"></script>
 <script src="js/bootstrap.min.js?v=3.3.6" th:src="@{~/js/bootstrap.min.js}"></script>
-<!-- 自定义js -->
-<!--注释掉即可消除页面小房子-->
-<script src="js/content.js?v=1.0.0" th:src="@{~/js/content.js}"></script>
+
 <!-- ChartJS-->
 <script src="js/plugins/chartJs/Chart.min.js"
         th:src="@{~/js/plugins/chartJs/Chart.min.js}"></script>
@@ -205,6 +215,11 @@
         th:src="@{~/js/plugins/sweetalert/sweetalert.min.js}"></script>
 <!-- js函数 -->
 <script>
+    // 使用animation.css修改Bootstrap Modal
+    $('.modal').appendTo("body");
+
+    $("[data-toggle=popover]").popover();
+
     function deleteCategory(categoryId) {
         swal({
             title: "您确定要删除此分类吗？",
@@ -218,6 +233,29 @@
             //添加请求操作
             window.location.href = "/admin/deleteCategory/" + categoryId;
             swal("删除成功！", "您已经永久删除了此分类。", "success");
+        });
+    }
+</script>
+
+<script>
+    function addCategory() {
+        var categoryName = $("#categoryName").serialize();
+        $.ajax({
+            type: "post",
+            data: "categoryName=" + categoryName,
+            url: "/admin/addCategory",
+            async: true,
+            success: function () {
+                window.location.href = "/admin/toAdminCategory";
+            },
+            error: function () {
+                console.log("发生错误")
+                alert("请求失败");
+            },
+            complete: function () {
+                console.log("ajax请求完事，最终操作在这里完成")
+
+            }
         });
     }
 </script>

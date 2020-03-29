@@ -2,7 +2,6 @@ package com.salthai.blog;
 
 import com.salthai.blog.mapper.ArticleMapper;
 import com.salthai.blog.pojo.Article;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -124,7 +123,6 @@ public class ArticleMapperTest {
 
   }
 
-  @Test
   public void deleteArticleByArticleBelong() {
     if (articleMapper.deleteByArticleBelong(3)) {
       System.out.println("success");

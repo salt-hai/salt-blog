@@ -5,12 +5,11 @@ import com.github.pagehelper.PageInfo;
 import com.salthai.blog.pojo.Category;
 import com.salthai.blog.service.admin.AdminArticleService;
 import com.salthai.blog.service.admin.AdminCategoryService;
+import com.salthai.blog.utils.DataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -63,10 +62,33 @@ public class AdminCategoryController {
   public String deleteCategoryByCategoryId(@PathVariable int categoryId) throws Exception {
     int articleBelong = categoryId;
     if (adminCategoryService.deleteByCategoryId(categoryId)
-        && adminArticleService.deleteByArticleBelong(articleBelong)) {
+            && adminArticleService.deleteByArticleBelong(articleBelong)) {
       return "redirect:/admin/toAdminCategory";
     } else {
       return "redirect:/admin/toAdminCategory";
+    }
+  }
+
+  /**
+   * 添加分类
+   *
+   * @param categoryName
+   * @return
+   * @throws Exception
+   */
+  @PostMapping("/addCategory")
+  @ResponseBody
+  public String addCategory(@RequestParam("categoryName") String categoryName) throws Exception {
+    System.out.println(categoryName);
+    Category category = new Category();
+    if (categoryName.length() == 0) {
+      return "error";
+    } else {
+      DataUtil dataUtil = new DataUtil();
+      category.setCategoryName(categoryName);
+      category.setCategoryTime(dataUtil.getDate());
+      adminCategoryService.addCategory(category);
+      return "添加成功";
     }
   }
 }
