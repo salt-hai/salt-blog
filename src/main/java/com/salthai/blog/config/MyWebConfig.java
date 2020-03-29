@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class MyWebConfig implements WebMvcConfigurer {
-  // set属性注入，没有变量注入那么简洁，但是稳
+  // set属性注入
   private AdminLoginInterceptor adminLoginInterceptor;
 
   @Autowired
