@@ -22,7 +22,7 @@ import java.util.List;
 public class JsonConfig implements WebMvcConfigurer {
 
     /**
-     * 使用阿里 fastjson 作为 JSON MessageConverter
+     * 使用阿里 fastJson 作为 JSON MessageConverter
      *
      * @param converters
      */

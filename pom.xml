@@ -69,7 +69,7 @@
             <version>4.1.6</version>
         </dependency>
 
-        <!--       阿里fastjson-->
+        <!--       阿里fastJson-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
