@@ -31,7 +31,7 @@ public class ArticleController {
   /**
    * index
    *
-   * @param modelMap modelmap对象
+   * @param modelMap ModelMap对象
    * @param start    0页开始
    * @param size     每页6条
    * @return String

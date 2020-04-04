@@ -4,13 +4,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>友情链接管理</title>
-		<link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-		<link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
-		<link href="css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
-		<link href="css/animate.css" rel="stylesheet">
-		<link href="css/style.css?v=4.1.0" rel="stylesheet">
+		<link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
+		<link href="css/font-awesome.css?v=4.4.0" rel="stylesheet" th:href="@{~/css/font-awesome.css}"/>
+		<link href="css/animate.css" rel="stylesheet" th:href="@{~/css/animate.css}"/>
+		<link href="css/style.css?v=4.1.0" rel="stylesheet" th:href="@{~/css/style.css}"/>
 		<!-- Sweet Alert -->
-		<link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+		<link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet"
+			  th:href="@{~/css/plugins/sweetalert/sweetalert.css}"/>
 
 	</head>
 	<body class="gray-bg top-navigation">
@@ -161,25 +161,28 @@
 			</div>
 		</div>
 
-		<!-- 全局js -->
-		<script src="js/jquery.min.js?v=2.1.4"></script>
-		<script src="js/bootstrap.min.js?v=3.3.6"></script>
 
-		<!-- 自定义js -->
-		<script src="js/content.js?v=1.0.0"></script>
+		<!-- 全局js -->
+		<script src="js/jquery.min.js?v=2.1.4" th:src="@{~/js/jquery.min.js}"></script>
+		<script src="js/bootstrap.min.js?v=3.3.6" th:src="@{~/js/bootstrap.min.js}"></script>
+
+		<!-- ChartJS-->
+		<script src="js/plugins/chartJs/Chart.min.js"
+				th:src="@{~/js/plugins/chartJs/Chart.min.js}"></script>
+
+		<!-- Peity -->
+		<script src="js/plugins/peity/jquery.peity.min.js"
+				th:src="@{~/js/plugins/peity/jquery.peity.min.js}"></script>
 
 		<!-- Sweet alert -->
-		<script src="js/plugins/sweetalert/sweetalert.min.js"></script>
-		<!-- Bootstrap table -->
-		<script src="js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
-		<script src="js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
-		<script src="js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="js/plugins/sweetalert/sweetalert.min.js"
+				th:src="@{~/js/plugins/sweetalert/sweetalert.min.js}"></script>
 
 		<!-- Peity -->
 		<script src="js/demo/bootstrap-table-demo.js"></script>
 		<!-- js函数 -->
 		<script>
-			$('.deleteArticle').click(function() {
+			$('.deleteArticle').click(function () {
 				swal({
 					title: "您确定要删除此链接吗？",
 					text: "删除后将无法恢复，请谨慎操作！",

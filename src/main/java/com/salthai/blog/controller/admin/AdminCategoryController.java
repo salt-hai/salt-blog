@@ -9,6 +9,7 @@ import com.salthai.blog.utils.DataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -70,25 +71,24 @@ public class AdminCategoryController {
   }
 
   /**
-   * 添加分类
+   * 突然意识到爷的前端非常差，添加分类
    *
    * @param categoryName
    * @return
    * @throws Exception
    */
-  @PostMapping("/addCategory")
+  @RequestMapping(value = "/addCategory", method = RequestMethod.POST)
   @ResponseBody
   public String addCategory(@RequestParam("categoryName") String categoryName) throws Exception {
-    System.out.println(categoryName);
     Category category = new Category();
-    if (categoryName.length() == 0) {
+    if (StringUtils.isEmpty(categoryName)) {
       return "error";
     } else {
       DataUtil dataUtil = new DataUtil();
       category.setCategoryName(categoryName);
       category.setCategoryTime(dataUtil.getDate());
       adminCategoryService.addCategory(category);
-      return "添加成功";
+      return "success";
     }
   }
 }
