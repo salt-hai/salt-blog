@@ -62,6 +62,7 @@ public class AdminCategoryController {
   @RequestMapping("/deleteCategory/{categoryId}")
   public String deleteCategoryByCategoryId(@PathVariable int categoryId) throws Exception {
     int articleBelong = categoryId;
+    //删除分类也一并删除该分类下的文章
     if (adminCategoryService.deleteByCategoryId(categoryId)
             && adminArticleService.deleteByArticleBelong(articleBelong)) {
       return "redirect:/admin/toAdminCategory";

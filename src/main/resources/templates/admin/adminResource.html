@@ -51,7 +51,7 @@
                         </li>
 
                         <li class="dropdown">
-                            <a aria-expanded="false" role="button" href="#">资源管理</a>
+                            <a aria-expanded="false" role="button" th:href="@{/admin/toAdminResource}">资源管理</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -100,7 +100,7 @@
 
                             <!-- 管理表格 -->
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="tajble table-striped">
                                     <thead>
                                     <tr>
                                         <th></th>
@@ -112,33 +112,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    <tr th:each="resource:${resourcePageInfo.list}">
                                         <td>
                                             <input type="checkbox" name="input[]">
                                         </td>
-                                        <td>1</td>
-                                        <td>Java疯狂讲义</td>
-                                        <td>www.baidu.com</a>
-                                        <td>2020-02-12 19:37</td>
+                                        <td th:text="${resource.resourceId}">1</td>
+                                        <td th:text="${resource.resourceName}">Java疯狂讲义</td>
+                                        <td th:text="${resource.resourcePath}">www.baidu.com</td>
+                                        <td th:text="${resource.resourceTime}">2020-02-12 19:37</td>
                                         <td>
-                                            <button class="btn btn-warning btn-sm deleteArticle">删除</button>
+                                            <button class="btn btn-warning btn-sm"
+                                                    th:onclick="deleteResource([[${resource.resourceId}]])">删除
+                                            </button>
                                             </a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" name="input[]">
-                                        </td>
-                                        <td>1</td>
-                                        <td>Java疯狂讲义</td>
-                                        <a>www.baidu.com</a>
-                                        <td>2020-02-12 19:37</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm deleteResource">删除</button>
-                                            </a>
-                                        </td>
-                                    </tr>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -150,13 +138,11 @@
             </div>
             <div align="center">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i>
+                    <button type="button" class="btn btn-white"><i class="fa fa-chevron-left"><a
+                            th:href="@{/admin/toAdminResource(start=${resourcePageInfo.pageNum-1})}">上一页</a></i>
                     </button>
-                    <button class="btn btn-white  active">1</button>
-                    <button class="btn btn-white">2</button>
-
-
-                    <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i>
+                    <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"><a
+                            th:href="@{/admin/toAdminResource(start=${resourcePageInfo.pageNum+1})}">下一页</a></i>
                     </button>
                 </div>
             </div>
@@ -194,20 +180,26 @@
         th:src="@{~/js/plugins/sweetalert/sweetalert.min.js}"></script>
 <!-- js函数 -->
 <script>
-    $('.deleteResource').click(function () {
+    // 使用animation.css修改Bootstrap Modal
+    $('.modal').appendTo("body");
+
+    $("[data-toggle=popover]").popover();
+
+    function deleteResource(resourceId) {
         swal({
             title: "您确定要删除此资源吗？",
-            text: "删除后将无法恢复，请谨慎操作！",
+            text: "请谨慎操作！",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "删除",
             closeOnConfirm: false
         }, function () {
-            // 添加Ajax操作
+            //添加请求操作
+            window.location.href = "/admin/deleteResource/" + resourceId;
             swal("删除成功！", "您已经永久删除了此资源。", "success");
         });
-    });
+    }
 </script>
 </body>
 </html>
