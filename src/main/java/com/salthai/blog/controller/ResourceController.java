@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 /**
- * 文件下载
- *
- * @Author: salthai
- * @Date: 2020/3/19 14:20
- * @Version 1.0
+ * 文件下载 @Author: salthai @Date: 2020/3/19 14:20 @Version 1.0
  */
 @Controller
 public class ResourceController {
@@ -38,9 +34,10 @@ public class ResourceController {
      * @throws Exception
      */
     @RequestMapping("/resource/getAllResource")
-    public String getAllResource(ModelMap modelMap,
-                                 @RequestParam(value = "start", defaultValue = "0") int start,
-                                 @RequestParam(value = "size", defaultValue = "5") int size)
+    public String getAllResource(
+            ModelMap modelMap,
+            @RequestParam(value = "start", defaultValue = "0") int start,
+            @RequestParam(value = "size", defaultValue = "5") int size)
             throws Exception {
         PageHelper.startPage(start, size);
         List<Resource> resourceList = resourceService.findAllResource();
@@ -53,6 +50,5 @@ public class ResourceController {
             System.out.println("------/resource/getAllResource--------无数据");
             return "error";
         }
-
     }
 }

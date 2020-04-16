@@ -5,7 +5,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * @Author: salthai
+ * @Author: SaltHai
  * @Date: 2020/3/12 21:48
  * @Version 1.0
  */

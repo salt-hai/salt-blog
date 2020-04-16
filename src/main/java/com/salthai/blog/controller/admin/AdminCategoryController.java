@@ -72,7 +72,7 @@ public class AdminCategoryController {
   }
 
   /**
-   * 突然意识到爷的前端非常差，添加分类
+   * 添加分类
    *
    * @param categoryName
    * @return

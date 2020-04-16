@@ -35,7 +35,6 @@ public class CategoryController {
     @GetMapping("/category")
     public List<Category> getAllCategory() {
         List<Category> categoryList = categoryService.findAllCategory();
-        System.out.println("启动成功/category");
         return categoryList;
     }
 

@@ -23,6 +23,11 @@ public class MyWebConfig implements WebMvcConfigurer {
     this.adminLoginInterceptor = adminLoginInterceptor;
   }
 
+  /**
+   * 拦截器配置
+   *
+   * @param registry
+   */
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     // 添加一个拦截器，拦截以/admin为前缀的url路径
